@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Web Developer Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #38bdf8;
+            --accent-hover: #0ea5e9;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --font-ar: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-ar);
+            line-height: 1.6;
+        }
+
+        body.en {
+            font-family: var(--font-en);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .lang-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+
+        .badge {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-color);
+        }
+
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .skill-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            max-width: 650px;
+            margin: 0 auto 4rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 1rem;
+        }
+
+        #formStatus {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 1rem; }
+            .contact-box { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">&lt;AI.Dev /&gt;</div>
+        <ul class="nav-links">
+            <li><a href="#skills" data-key="navSkills">المهارات</a></li>
+            <li><a href="#projects" data-key="navProjects">المشاريع</a></li>
+            <li><a href="#contact" data-key="navContact">تواصل معي</a></li>
+        </ul>
+        <button class="lang-btn" id="langToggle">English</button>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <span class="badge" data-key="badge">متاح للعمل الحر والتوظيف</span>
+            <h1 data-key="heroTitle">مطور ويب وتطبيقات الذكاء الاصطناعي</h1>
+            <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية ذكية.</p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary" data-key="btnProjects">عرض المشاريع</a>
+                <a href="#contact" class="btn btn-secondary" data-key="btnContact">ابدأ المحادثة</a>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3 data-key="skillCat1">تطوير واجهات المستخدم (Frontend)</h3>
+                    <div class="tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript (ES6+)</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">CSS Grid & Flexbox</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3 data-key="skillCat2">تكامل الذكاء الاصطناعي (AI Integration)</h3>
+                    <div class="tags">
+                        <span class="tag">OpenAI & Gemini APIs</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">AI Chatbots</span>
+                        <span class="tag">Automation Tools</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3 data-key="skillCat3">الأدوات وسير العمل (Tools & Workflow)</h3>
+                    <div class="tags">
+                        <span class="tag">Git & GitHub</span>
+                        <span class="tag">VS Code</span>
+                        <span class="tag">Vercel Deployment</span>
+                        <span class="tag">Chrome DevTools</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title" data-key="projectsTitle">المشاريع المميزة</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 data-key="p1Title">مساعد دردشة تفاعلي بالذكاء الاصطناعي</h3>
+                        <p data-key="p1Desc">تطبيق ويب يعتمد على واجهة برمجة تطبيقات ذكية للرد على استفسارات المستخدمين بشكل لحظي مع واجهة سريعة ومتجاوبة.</p>
+                        <div class="tags">
+                            <span class="tag">HTML / CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Gemini API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 data-key="p2Title">أداة توليد المحتوى الذكي</h3>
+                        <p data-key="p2Desc">منصة ويب بسيطة تساعد صناع المحتوى على توليد مقالات وأفكار تسويقية مخصصة باستخدام نماذج التوليد الحديثة.</p>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API Integration</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 data-key="p3Title">معرض أعمال تفاعلي ثنائي اللغة</h3>
+                        <p data-key="p3Desc">موقع متكامل سريع التحميل يدعم تغيير اللغات لحظياً، ومستضاف عبر Vercel مع مراعاة أعلى معايير سهولة التصفح.</p>
+                        <div class="tags">
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Git & GitHub</span>
+                            <span class="tag">Vercel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title" data-key="contactTitle">تواصل معي</h2>
+            <div class="contact-box">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name" data-key="formName">الاسم الكريم</label>
+                        <input type="text" id="name" class="form-control" required placeholder="أدخل اسمك">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-key="formEmail">البريد الإلكتروني</label>
+                        <input type="email" id="email" class="form-control" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" data-key="formSubject">الموضوع</label>
+                        <input type="text" id="subject" class="form-control" required placeholder="موضوع الرسالة أو نوع المشروع">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-key="formMessage">الرسالة</label>
+                        <textarea id="message" class="form-control" required placeholder="اكتب تفاصيل استفسارك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn" data-key="btnSubmit">إرسال الرسالة</button>
+                    <div id="formStatus"></div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p data-key="footerText">&copy; 2026 جميع الحقوق محفوظة | صُمم بواسطة مطور ويب وذكاء اصطناعي</p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                navSkills: "المهارات",
+                navProjects: "المشاريع",
+                navContact: "تواصل معي",
+                badge: "متاح للعمل الحر والتوظيف",
+                heroTitle: "مطور ويب وتطبيقات الذكاء الاصطناعي",
+                heroSubtitle: "أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية ذكية.",
+                btnProjects: "عرض المشاريع",
+                btnContact: "ابدأ المحادثة",
+                skillsTitle: "المهارات والتقنيات",
+                skillCat1: "تطوير واجهات المستخدم (Frontend)",
+                skillCat2: "تكامل الذكاء الاصطناعي (AI Integration)",
+                skillCat3: "الأدوات وسير العمل (Tools & Workflow)",
+                projectsTitle: "المشاريع المميزة",
+                p1Title: "مساعد دردشة تفاعلي بالذكاء الاصطناعي",
+                p1Desc: "تطبيق ويب يعتمد على واجهة برمجة تطبيقات ذكية للرد على استفسارات المستخدمين بشكل لحظي مع واجهة سريعة ومتجاوبة.",
+                p2Title: "أداة توليد المحتوى الذكي",
+                p2Desc: "منصة ويب بسيطة تساعد صناع المحتوى على توليد مقالات وأفكار تسويقية مخصصة باستخدام نماذج التوليد الحديثة.",
+                p3Title: "معرض أعمال تفاعلي ثنائي اللغة",
+                p3Desc: "موقع متكامل سريع التحميل يدعم تغيير اللغات لحظياً، ومستضاف عبر Vercel مع مراعاة أعلى معايير سهولة التصفح.",
+                demoLink: "معاينة مباشرة ←",
+                codeLink: "كود المشروع ←",
+                contactTitle: "تواصل معي",
+                formName: "الاسم الكريم",
+                formEmail: "البريد الإلكتروني",
+                formSubject: "الموضوع",
+                formMessage: "الرسالة",
+                btnSubmit: "إرسال الرسالة",
+                footerText: "© 2026 جميع الحقوق محفوظة | صُمم بواسطة مطور ويب وذكاء اصطناعي",
+                statusSuccess: "تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.",
+                btnLang: "English"
+            },
+            en: {
+                navSkills: "Skills",
+                navProjects: "Projects",
+                navContact: "Contact",
+                badge: "Available for Freelance & Full-time",
+                heroTitle: "AI & Modern Web Developer",
+                heroSubtitle: "Bridging modern web technologies with artificial intelligence to build fast, intuitive user experiences and intelligent web applications.",
+                btnProjects: "View Projects",
+                btnContact: "Get in Touch",
+                skillsTitle: "Skills & Technologies",
+                skillCat1: "Frontend Web Development",
+                skillCat2: "AI Integration & APIs",
+                skillCat3: "Tools & Workflow",
+                projectsTitle: "Featured Projects",
+                p1Title: "Interactive AI Chat Assistant",
+                p1Desc: "A responsive web application leveraging state-of-the-art LLM APIs to deliver instant, intelligent answers.",
+                p2Title: "AI Content Generator",
+                p2Desc: "A streamlined web utility empowering creators to produce custom marketing copies and structured blog ideas.",
+                p3Title: "Bilingual Modern Portfolio",
+                p3Desc: "A high-performance portfolio featuring instant language switching, deployed seamlessly on Vercel.",
+                demoLink: "Live Demo →",
+                codeLink: "Source Code →",
+                contactTitle: "Contact Me",
+                formName: "Full Name",
+                formEmail: "Email Address",
+                formSubject: "Subject",
+                formMessage: "Your Message",
+                btnSubmit: "Send Message",
+                footerText: "© 2026 All Rights Reserved | Built by AI Web Developer",
+                statusSuccess: "Thank you! Your message has been sent successfully.",
+                btnLang: "العربية"
+            }
+        };
+
+        let currentLang = 'ar';
+        const langToggleBtn = document.getElementById('langToggle');
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            // Set HTML Direction & Language
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            if (currentLang === 'en') {
+                document.body.classList.add('en');
+            } else {
+                document.body.classList.remove('en');
+            }
+
+            // Update all texts
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    elem.textContent = translations[currentLang][key];
+                }
+            });
+
+            // Update button label
+            langToggleBtn.textContent = translations[currentLang].btnLang;
+        });
+
+        // Contact Form Submission Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const statusDiv = document.getElementById('formStatus');
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = '#38bdf8';
+            statusDiv.textContent = translations[currentLang].statusSuccess;
+            
+            // Reset form fields
+            document.getElementById('contactForm').reset();
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
