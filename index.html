@@ -21,7 +21,12 @@
             --font-en: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--bg-base);
@@ -31,165 +36,423 @@
                 radial-gradient(ellipse at 50% 90%, rgba(255, 107, 53, 0.1) 0%, transparent 60%),
                 linear-gradient(rgba(7, 9, 19, 0.88), rgba(7, 9, 19, 0.94)),
                 url('https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            color: var(--text-main); font-family: var(--font-ar); line-height: 1.6; min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-ar);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        body.en { font-family: var(--font-en); }
+        body.en {
+            font-family: var(--font-en);
+        }
 
         nav {
-            position: sticky; top: 0; background: rgba(7, 9, 19, 0.75);
-            backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.2rem 2.5rem; border-bottom: 1px solid var(--glass-border); z-index: 100;
+            position: sticky;
+            top: 0;
+            background: rgba(7, 9, 19, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 100;
         }
 
-        .logo { font-weight: 800; font-size: 1.25rem; letter-spacing: 1.5px; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-        .nav-links a { color: var(--text-sub); text-decoration: none; transition: all 0.3s ease; font-size: 0.95rem; font-weight: 500; }
-        .nav-links a:hover { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0, 210, 255, 0.5); }
-        
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: 1.5px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-sub);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
         .lang-btn {
-            background: rgba(157, 78, 221, 0.12); border: 1px solid rgba(157, 78, 221, 0.4); color: #d8b4fe;
-            padding: 0.45rem 1.1rem; border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
-            transition: all 0.3s ease; backdrop-filter: blur(6px);
+            background: rgba(157, 78, 221, 0.12);
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            color: #d8b4fe;
+            padding: 0.45rem 1.1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(6px);
         }
-        .lang-btn:hover { background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); color: #ffffff; border-color: transparent; box-shadow: 0 0 18px rgba(157, 78, 221, 0.6); }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+        .lang-btn:hover {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 0 18px rgba(157, 78, 221, 0.6);
+        }
 
-        .hero { text-align: center; padding: 4.5rem 1rem 3.5rem; }
-        .profile-wrapper { position: relative; display: inline-block; margin-bottom: 1.5rem; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4.5rem 1rem 3.5rem;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
         .profile-pic {
-            width: 165px; height: 165px; border-radius: 50%; object-fit: cover; border: 4px solid var(--neon-blue);
-            display: block; animation: cyberPulse 4s infinite alternate ease-in-out; transition: transform 0.4s ease;
+            width: 165px;
+            height: 165px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--neon-blue);
+            display: block;
+            animation: cyberPulse 4s infinite alternate ease-in-out;
+            transition: transform 0.4s ease;
         }
-        .profile-pic:hover { transform: scale(1.05); }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
 
         @keyframes cyberPulse {
-            0% { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 210, 255, 0.5), 0 0 30px rgba(0, 210, 255, 0.3); }
-            50% { border-color: var(--neon-purple); box-shadow: 0 0 25px rgba(157, 78, 221, 0.7), 0 0 50px rgba(157, 78, 221, 0.4); }
-            100% { border-color: var(--neon-orange); box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 107, 53, 0.3); }
+            0% {
+                border-color: var(--neon-blue);
+                box-shadow: 0 0 15px rgba(0, 210, 255, 0.5), 0 0 30px rgba(0, 210, 255, 0.3);
+            }
+            50% {
+                border-color: var(--neon-purple);
+                box-shadow: 0 0 25px rgba(157, 78, 221, 0.7), 0 0 50px rgba(157, 78, 221, 0.4);
+            }
+            100% {
+                border-color: var(--neon-orange);
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 107, 53, 0.3);
+            }
         }
 
-        .user-name { font-size: 2.3rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 0.6rem; text-transform: uppercase; background: linear-gradient(135deg, #ffffff 30%, var(--neon-blue) 70%, var(--neon-purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .badge { background: rgba(157, 78, 221, 0.12); color: #d8b4fe; border: 1px solid rgba(157, 78, 221, 0.4); padding: 0.35rem 1.1rem; border-radius: 30px; font-size: 0.85rem; display: inline-block; margin-bottom: 1.2rem; font-weight: 600; box-shadow: 0 0 12px rgba(157, 78, 221, 0.2); }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--text-main); }
-        .hero p { color: var(--text-sub); font-size: 1.15rem; max-width: 720px; margin: 0 auto 2.2rem; }
-        
-        .hero-cta { display: flex; justify-content: center; gap: 1.2rem; }
-        .btn { display: inline-block; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.95rem; }
-        .btn-primary { background: var(--gradient-accent); color: #ffffff; font-weight: 700; box-shadow: 0 4px 18px rgba(157, 78, 221, 0.4); border: none; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(255, 107, 53, 0.55); }
-        .btn-secondary { background: var(--glass-card); color: var(--text-main); border: 1px solid var(--glass-border); backdrop-filter: blur(12px); }
-        .btn-secondary:hover { border-color: var(--neon-blue); transform: translateY(-2px); box-shadow: 0 0 15px rgba(0, 210, 255, 0.3); }
-
-        .section-title { text-align: center; font-size: 2.1rem; margin-bottom: 2.8rem; position: relative; }
-        .section-title::after { content: ''; display: block; width: 70px; height: 3.5px; background: var(--gradient-accent); margin: 0.6rem auto 0; border-radius: 2px; box-shadow: 0 0 12px rgba(157, 78, 221, 0.5); }
-
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-bottom: 5rem; }
-        .glass-card { background: var(--glass-card); border: 1px solid var(--glass-border); border-radius: 18px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
-        .glass-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(157, 78, 221, 0.18) 0%, rgba(255, 107, 53, 0.08) 40%, transparent 65%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
-        .glass-card:hover::before { opacity: 1; }
-        .glass-card:hover { transform: translateY(-8px); border-color: var(--glass-border-hover); box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 210, 255, 0.3); }
-        
-        .skill-card h3 { color: #d8b4fe; margin-bottom: 1.2rem; font-size: 1.2rem; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-        .tag { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(157, 78, 221, 0.25); padding: 0.4rem 0.85rem; border-radius: 8px; font-size: 0.85rem; color: #e2e8f0; transition: all 0.3s; backdrop-filter: blur(8px); }
-        .tag:hover { background: rgba(0, 210, 255, 0.15); color: var(--neon-blue); border-color: rgba(0, 210, 255, 0.5); box-shadow: 0 0 12px rgba(0, 210, 255, 0.3); }
-
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 5rem; }
-        .project-card { display: flex; flex-direction: column; padding: 0; }
-        .project-content { padding: 2.2rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .project-content h3 { margin-bottom: 0.6rem; color: var(--text-main); font-size: 1.25rem; }
-        .project-content p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 1.4rem; flex-grow: 1; }
-        .project-links { display: flex; gap: 1.2rem; margin-top: 1.2rem; }
-        .project-links a { color: var(--neon-blue); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; }
-        .project-links a:hover { color: var(--neon-orange); text-decoration: underline; }
-
-        .contact-box { max-width: 650px; margin: 0 auto 5rem; padding: 2.8rem; }
-        .form-group { margin-bottom: 1.4rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-sub); }
-        .form-control { width: 100%; padding: 0.9rem 1.1rem; background: var(--glass-input); border: 1px solid var(--glass-border); border-radius: 10px; color: var(--text-main); font-family: inherit; font-size: 0.95rem; backdrop-filter: blur(10px); transition: all 0.3s ease; }
-        .form-control:focus { outline: none; border-color: var(--neon-blue); box-shadow: 0 0 16px rgba(0, 210, 255, 0.35); }
-        textarea.form-control { resize: vertical; min-height: 120px; }
-        .submit-btn { width: 100%; padding: 0.95rem; font-size: 1rem; margin-top: 0.5rem; border: none; }
-        #formStatus { margin-top: 1.2rem; text-align: center; font-weight: 600; display: none; }
-
-        footer { text-align: center; padding: 2.2rem; border-top: 1px solid var(--glass-border); color: var(--text-sub); font-size: 0.9rem; background: rgba(7, 9, 19, 0.85); backdrop-filter: blur(12px); }
-
-        /* --- AI Chatbot Styles --- */
-        .chat-widget-btn {
-            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
-            background: var(--gradient-accent); border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; cursor: pointer; z-index: 1000;
-            box-shadow: 0 5px 20px rgba(157, 78, 221, 0.6); transition: all 0.3s ease;
-            animation: bounceIn 2s infinite alternate;
-        }
-        .chat-widget-btn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(0, 210, 255, 0.8); }
-        .chat-widget-btn svg { width: 32px; height: 32px; fill: white; }
-
-        .chat-window {
-            position: fixed; bottom: 110px; right: 30px; width: 370px; height: 520px;
-            background: var(--glass-card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border); border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            display: flex; flex-direction: column; overflow: hidden; z-index: 1000;
-            opacity: 0; transform: translateY(20px); pointer-events: none; transition: all 0.4s ease;
-        }
-        .chat-window.active { opacity: 1; transform: translateY(0); pointer-events: all; }
-        
-        .chat-header {
-            background: rgba(7, 9, 19, 0.8); padding: 1rem 1.2rem; border-bottom: 1px solid var(--glass-border);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .chat-header-title { color: var(--text-main); font-weight: bold; display: flex; align-items: center; gap: 8px; }
-        .chat-header-title span { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; }
-        .close-chat { color: var(--text-sub); cursor: pointer; font-size: 1.5rem; line-height: 1; }
-        .close-chat:hover { color: #ef4444; }
-
-        .chat-messages { flex-grow: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; }
-        .chat-msg { max-width: 85%; padding: 0.8rem 1rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; }
-        .msg-bot { background: rgba(255, 255, 255, 0.05); color: var(--text-main); align-self: flex-start; border: 1px solid rgba(255,255,255,0.1); border-bottom-right-radius: 2px; }
-        .msg-user { background: var(--gradient-accent); color: white; align-self: flex-end; border-bottom-left-radius: 2px; }
-        
-        .chat-input-area {
-            padding: 1rem; border-top: 1px solid var(--glass-border); background: rgba(7, 9, 19, 0.8);
-            display: flex; gap: 0.5rem; align-items: center;
-        }
-        .chat-input {
-            flex-grow: 1; background: var(--glass-input); border: 1px solid var(--glass-border);
-            color: var(--text-main); padding: 0.8rem; border-radius: 8px; outline: none; font-family: inherit;
-        }
-        .chat-input:focus { border-color: var(--neon-blue); }
-        
-        .action-btn {
-            background: var(--glass-card); border: 1px solid var(--glass-border); width: 42px; height: 42px;
-            border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;
-        }
-        .action-btn svg { width: 20px; height: 20px; fill: var(--neon-blue); }
-        .action-btn:hover { border-color: var(--neon-blue); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
-        
-        .send-btn { background: var(--gradient-accent); border: none; }
-        .send-btn svg { fill: white; }
-        
-        /* Microphone Recording Animation */
-        .mic-btn.recording {
-            animation: pulseRed 1.2s infinite; border-color: #ef4444; background: rgba(239, 68, 68, 0.1);
-        }
-        .mic-btn.recording svg { fill: #ef4444; }
-        
-        @keyframes pulseRed {
-            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
-            70% { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        .user-name {
+            font-size: 2.3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 30%, var(--neon-blue) 70%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .chat-messages::-webkit-scrollbar { width: 6px; }
-        .chat-messages::-webkit-scrollbar-track { background: transparent; }
-        .chat-messages::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 10px; }
+        .badge {
+            background: rgba(157, 78, 221, 0.12);
+            color: #d8b4fe;
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            padding: 0.35rem 1.1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 0 12px rgba(157, 78, 221, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            color: var(--text-sub);
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto 2.2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: #ffffff;
+            font-weight: 700;
+            box-shadow: 0 4px 18px rgba(157, 78, 221, 0.4);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.55);
+        }
+
+        .btn-secondary {
+            background: var(--glass-card);
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.1rem;
+            margin-bottom: 2.8rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3.5px;
+            background: var(--gradient-accent);
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(157, 78, 221, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 5rem;
+        }
+
+        .glass-card {
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.18) 0%, rgba(255, 107, 53, 0.08) 40%, transparent 65%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 210, 255, 0.3);
+        }
+
+        .skill-card h3 {
+            color: #d8b4fe;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(157, 78, 221, 0.25);
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            transition: all 0.3s;
+            backdrop-filter: blur(8px);
+        }
+
+        .tag:hover {
+            background: rgba(0, 210, 255, 0.15);
+            color: var(--neon-blue);
+            border-color: rgba(0, 210, 255, 0.5);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .project-content {
+            padding: 2.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.6rem;
+            color: var(--text-main);
+            font-size: 1.25rem;
+        }
+
+        .project-content p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 1.4rem;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.2rem;
+        }
+
+        .project-links a {
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .project-links a:hover {
+            color: var(--neon-orange);
+            text-decoration: underline;
+        }
+
+        .contact-box {
+            max-width: 650px;
+            margin: 0 auto 5rem;
+            padding: 2.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.1rem;
+            background: var(--glass-input);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 16px rgba(0, 210, 255, 0.35);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.95rem;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            border: none;
+        }
+
+        #formStatus {
+            margin-top: 1.2rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            background: rgba(7, 9, 19, 0.85);
+            backdrop-filter: blur(12px);
+        }
 
         @media (max-width: 768px) {
-            .chat-window { width: 90%; right: 5%; bottom: 100px; }
+            nav { padding: 1rem 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .user-name { font-size: 1.8rem; }
+            .contact-box { padding: 1.8rem; }
         }
     </style>
 </head>
@@ -211,256 +474,256 @@
             <div class="profile-wrapper">
                 <img src="me.jpeg" alt="Muhammed Elosman" class="profile-pic">
             </div>
+
             <h2 class="user-name">MUHAMMED ELOSMAN</h2>
+
             <span class="badge" data-key="badge">متاح للعمل الحر والتوظيف</span>
             <h1 data-key="heroTitle">مطور ويب وتطبيقات الذكاء الاصطناعي</h1>
             <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.</p>
+            
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary" data-key="btnProjects">عرض المشاريع</a>
                 <a href="#contact" class="btn btn-secondary" data-key="btnContact">ابدأ المحادثة</a>
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills">
             <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
             <div class="skills-grid">
+                
                 <div class="glass-card skill-card">
                     <h3 data-key="skillCat1">تطوير واجهات المستخدم (Frontend)</h3>
                     <div class="tags">
-                        <span class="tag">HTML5</span> <span class="tag">CSS3</span> <span class="tag">JavaScript (ES6+)</span>
-                        <span class="tag">Responsive Design</span> <span class="tag">CSS Grid & Flexbox</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript (ES6+)</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">CSS Grid & Flexbox</span>
                     </div>
                 </div>
+
                 <div class="glass-card skill-card">
                     <h3 data-key="skillCat2">تكامل الذكاء الاصطناعي (AI Integration)</h3>
                     <div class="tags">
-                        <span class="tag">OpenAI & Gemini APIs</span> <span class="tag">Prompt Engineering</span>
-                        <span class="tag">AI Chatbots</span> <span class="tag">Automation Tools</span>
+                        <span class="tag">OpenAI & Gemini APIs</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">AI Chatbots</span>
+                        <span class="tag">Automation Tools</span>
                     </div>
                 </div>
+
                 <div class="glass-card skill-card">
                     <h3 data-key="skillCat3">الأدوات وسير العمل (Tools & Workflow)</h3>
                     <div class="tags">
-                        <span class="tag">Git & GitHub</span> <span class="tag">VS Code</span>
-                        <span class="tag">Vercel Deployment</span> <span class="tag">Chrome DevTools</span>
+                        <span class="tag">Git & GitHub</span>
+                        <span class="tag">VS Code</span>
+                        <span class="tag">Vercel Deployment</span>
+                        <span class="tag">Chrome DevTools</span>
                     </div>
                 </div>
+
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">المشاريع المميزة</h2>
             <div class="projects-grid">
+                
                 <div class="glass-card project-card">
                     <div class="project-content">
                         <h3 data-key="p1Title">مساعد دردشة تفاعلي بالذكاء الاصطناعي</h3>
-                        <p data-key="p1Desc">تطبيق ويب متكامل يتصل بنماذج الذكاء الاصطناعي التوليدي لتقديم ردود ذكية وسريعة للمستخدمين.</p>
-                        <div class="tags"> <span class="tag">HTML / CSS</span> <span class="tag">JavaScript</span> <span class="tag">AI API</span> </div>
-                        <div class="project-links"> <a href="#">معاينة مباشرة &larr;</a> <a href="#">كود المشروع &larr;</a> </div>
+                        <p data-key="p1Desc">تطبيق ويب متكامل يتصل بنماذج الذكاء الاصطناعي التوليدي لتقديم ردود ذكية وسريعة للمستخدمين مع تصميم متجاوب فائق السرعة.</p>
+                        <div class="tags">
+                            <span class="tag">HTML / CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">AI API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                        </div>
                     </div>
                 </div>
+
                 <div class="glass-card project-card">
                     <div class="project-content">
                         <h3 data-key="p2Title">أداة توليد المحتوى الذكي</h3>
-                        <p data-key="p2Desc">منصة ويب تساعد صناع المحتوى ورواد الأعمال على ابتكار نصوص تسويقية بضغطة زر واحدة.</p>
-                        <div class="tags"> <span class="tag">JavaScript</span> <span class="tag">API Integration</span> <span class="tag">UI/UX</span> </div>
-                        <div class="project-links"> <a href="#">معاينة مباشرة &larr;</a> <a href="#">كود المشروع &larr;</a> </div>
+                        <p data-key="p2Desc">منصة ويب تساعد صناع المحتوى ورواد الأعمال على ابتكار نصوص تسويقية وأفكار برمجية احترافية بضغطة زر واحدة.</p>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API Integration</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                        </div>
                     </div>
                 </div>
+
                 <div class="glass-card project-card">
                     <div class="project-content">
                         <h3 data-key="p3Title">معرض أعمال تفاعلي احترافي</h3>
-                        <p data-key="p3Desc">موقع معرض أعمال ثنائي اللغة ذو أداء فائق ومستضاف عبر Vercel مع تصميم عصري.</p>
-                        <div class="tags"> <span class="tag">Responsive</span> <span class="tag">GitHub</span> <span class="tag">Vercel</span> </div>
-                        <div class="project-links"> <a href="#">معاينة مباشرة &larr;</a> <a href="#">كود المشروع &larr;</a> </div>
+                        <p data-key="p3Desc">موقع معرض أعمال ثنائي اللغة ذو أداء فائق ومستضاف عبر Vercel مع تصميم عصري يدعم التبديل اللحظي بين اللغات.</p>
+                        <div class="tags">
+                            <span class="tag">Responsive</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">Vercel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">تواصل معي</h2>
             <div class="glass-card contact-box">
                 <form id="contactForm" onsubmit="handleFormSubmit(event)">
                     <div class="form-group">
-                        <label for="name">الاسم الكريم</label>
+                        <label for="name" data-key="formName">الاسم الكريم</label>
                         <input type="text" id="name" class="form-control" required placeholder="أدخل اسمك الكريم">
                     </div>
                     <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
+                        <label for="email" data-key="formEmail">البريد الإلكتروني</label>
                         <input type="email" id="email" class="form-control" required placeholder="name@example.com">
                     </div>
                     <div class="form-group">
-                        <label for="message">الرسالة</label>
-                        <textarea id="message" class="form-control" required placeholder="اكتب تفاصيل مشروعك هنا..."></textarea>
+                        <label for="subject" data-key="formSubject">الموضوع</label>
+                        <input type="text" id="subject" class="form-control" required placeholder="موضوع الرسالة أو فرصة العمل">
                     </div>
-                    <button type="submit" class="btn btn-primary submit-btn">إرسال الرسالة</button>
+                    <div class="form-group">
+                        <label for="message" data-key="formMessage">الرسالة</label>
+                        <textarea id="message" class="form-control" required placeholder="اكتب رسالتك أو تفاصيل مشروعك هنا..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary submit-btn" data-key="btnSubmit">إرسال الرسالة</button>
                     <div id="formStatus"></div>
                 </form>
             </div>
         </section>
     </div>
 
-    <!-- AI Chatbot UI with Microphone -->
-    <div class="chat-widget-btn" id="chatBtn" onclick="toggleChat()">
-        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
-    </div>
-
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            <div class="chat-header-title"><span></span> المساعد الذكي لمحمد</div>
-            <div class="close-chat" onclick="toggleChat()">&times;</div>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="chat-msg msg-bot">يا هلا فيك! 👋 أنا المساعد الذكي. بتقدر تسألني كتابياً أو صوتياً (عبر المايك 🎤) عن مهارات محمد، مشاريعه، أو كيف بيقدر يصمم لك موقعك!</div>
-        </div>
-        <div class="chat-input-area">
-            <button class="action-btn mic-btn" id="micBtn" onclick="startDictation()" title="تحدث بالصوت">
-                <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
-            </button>
-            <input type="text" id="chatInput" class="chat-input" placeholder="اكتب أو تحدث هنا..." onkeypress="handleKeyPress(event)">
-            <button class="action-btn send-btn" onclick="sendMessage()" title="إرسال">
-                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-            </button>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2026 MUHAMMED ELOSMAN | جميع الحقوق محفوظة</p>
+        <p data-key="footerText">&copy; 2026 MUHAMMED ELOSMAN | جميع الحقوق محفوظة</p>
     </footer>
 
-    <!-- Scripts (Knowledge Base + Voice Recognition) -->
+    <!-- Dual Language Toggle Script -->
     <script>
+        const translations = {
+            ar: {
+                navSkills: "المهارات",
+                navProjects: "المشاريع",
+                navContact: "تواصل معي",
+                badge: "متاح للعمل الحر والتوظيف",
+                heroTitle: "مطور ويب وتطبيقات الذكاء الاصطناعي",
+                heroSubtitle: "أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.",
+                btnProjects: "عرض المشاريع",
+                btnContact: "ابدأ المحادثة",
+                skillsTitle: "المهارات والتقنيات",
+                skillCat1: "تطوير واجهات المستخدم (Frontend)",
+                skillCat2: "تكامل الذكاء الاصطناعي (AI Integration)",
+                skillCat3: "الأدوات وسير العمل (Tools & Workflow)",
+                projectsTitle: "المشاريع المميزة",
+                p1Title: "مساعد دردشة تفاعلي بالذكاء الاصطناعي",
+                p1Desc: "تطبيق ويب متكامل يتصل بنماذج الذكاء الاصطناعي التوليدي لتقديم ردود ذكية وسريعة للمستخدمين مع تصميم متجاوب فائق السرعة.",
+                p2Title: "أداة توليد المحتوى الذكي",
+                p2Desc: "منصة ويب تساعد صناع المحتوى ورواد الأعمال على ابتكار نصوص تسويقية وأفكار برمجية احترافية بضغطة زر واحدة.",
+                p3Title: "معرض أعمال تفاعلي احترافي",
+                p3Desc: "موقع معرض أعمال ثنائي اللغة ذو أداء فائق ومستضاف عبر Vercel مع تصميم عصري يدعم التبديل اللحظي بين اللغات.",
+                demoLink: "معاينة مباشرة ←",
+                codeLink: "كود المشروع ←",
+                contactTitle: "تواصل معي",
+                formName: "الاسم الكريم",
+                formEmail: "البريد الإلكتروني",
+                formSubject: "الموضوع",
+                formMessage: "الرسالة",
+                btnSubmit: "إرسال الرسالة",
+                footerText: "© 2026 MUHAMMED ELOSMAN | جميع الحقوق محفوظة",
+                statusSuccess: "تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.",
+                btnLang: "English"
+            },
+            en: {
+                navSkills: "Skills",
+                navProjects: "Projects",
+                navContact: "Contact",
+                badge: "Available for Freelance & Full-time",
+                heroTitle: "AI & Modern Web Developer",
+                heroSubtitle: "Bridging modern web technologies with artificial intelligence to craft fast, intuitive, and intelligent web applications.",
+                btnProjects: "View Projects",
+                btnContact: "Get in Touch",
+                skillsTitle: "Skills & Technologies",
+                skillCat1: "Frontend Web Development",
+                skillCat2: "AI Integration & APIs",
+                skillCat3: "Tools & Workflow",
+                projectsTitle: "Featured Projects",
+                p1Title: "Interactive AI Chat Assistant",
+                p1Desc: "A responsive web application leveraging state-of-the-art LLM APIs to deliver instant, intelligent answers.",
+                p2Title: "AI Content Generator",
+                p2Desc: "A streamlined web utility empowering creators to produce custom marketing copies and structured blog ideas.",
+                p3Title: "Bilingual Modern Portfolio",
+                p3Desc: "A high-performance portfolio featuring instant language switching, deployed seamlessly on Vercel.",
+                demoLink: "Live Demo →",
+                codeLink: "Source Code →",
+                contactTitle: "Contact Me",
+                formName: "Full Name",
+                formEmail: "Email Address",
+                formSubject: "Subject",
+                formMessage: "Your Message",
+                btnSubmit: "Send Message",
+                footerText: "© 2026 MUHAMMED ELOSMAN | All Rights Reserved",
+                statusSuccess: "Thank you! Your message has been sent successfully.",
+                btnLang: "العربية"
+            }
+        };
+
+        let currentLang = 'ar';
+        const langToggleBtn = document.getElementById('langToggle');
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            
+            if (currentLang === 'en') {
+                document.body.classList.add('en');
+            } else {
+                document.body.classList.remove('en');
+            }
+
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    elem.textContent = translations[currentLang][key];
+                }
+            });
+
+            langToggleBtn.textContent = translations[currentLang].btnLang;
+        });
+
         function handleFormSubmit(e) {
             e.preventDefault();
             const statusDiv = document.getElementById('formStatus');
-            statusDiv.style.display = 'block'; statusDiv.style.color = '#00d2ff';
-            statusDiv.textContent = "تم إرسال رسالتك بنجاح! سأتواصل معك قريباً.";
+            statusDiv.style.display = 'block';
+            statusDiv.style.color = '#00d2ff';
+            statusDiv.textContent = translations[currentLang].statusSuccess;
+            
             document.getElementById('contactForm').reset();
-            setTimeout(() => { statusDiv.style.display = 'none'; }, 5000);
-        }
-
-        // --- AI Chatbot Logic ---
-        function toggleChat() {
-            document.getElementById('chatWindow').classList.toggle('active');
-        }
-
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') sendMessage();
-        }
-
-        function sendMessage() {
-            const inputField = document.getElementById('chatInput');
-            const message = inputField.value.trim();
-            if (message === '') return;
-
-            appendMessage(message, 'msg-user');
-            inputField.value = '';
-
+            
             setTimeout(() => {
-                const reply = generateBotResponse(message);
-                appendMessage(reply, 'msg-bot');
-            }, 700);
-        }
-
-        function appendMessage(text, className) {
-            const messagesContainer = document.getElementById('chatMessages');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = `chat-msg ${className}`;
-            msgDiv.textContent = text;
-            messagesContainer.appendChild(msgDiv);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-
-        // --- Expanded Knowledge Base (يفهم اللهجة والسياق) ---
-        function generateBotResponse(text) {
-            const t = text.toLowerCase();
-            
-            // الترحيب
-            if(t.includes('مرحبا') || t.includes('هلا') || t.includes('شلونك') || t.includes('كيفك') || t.includes('السلام')) {
-                return "يا مية هلا! 🌟 أنا البوت الخاص بمحمد. تفضل، كيف بقدر أخدمك اليوم؟";
-            }
-            
-            // الوظيفة والمهنة
-            if(t.includes('شو شغله') || t.includes('ايش يشتغل') || t.includes('بيشتغل') || t.includes('مين محمد') || t.includes('مبرمج')) {
-                return "محمد هو مطور ويب وتطبيقات ذكاء اصطناعي (AI Web Developer). بيبني لك مواقع فخمة، سريعة، ومربوطة بأحدث تقنيات الـ AI.";
-            }
-
-            // الخدمات (شو بيستفاد / شو بيفيدني)
-            if(t.includes('يساعدني') || t.includes('يصمم') || t.includes('موقع') || t.includes('متجر') || t.includes('خدمات') || t.includes('استفاد')) {
-                return "بيقدر يصمم لك موقع تعريفي للبيزنس تبعك، يبرمج لك متجر إلكتروني، أو حتى يضيف لموقعك بوت ذكي (مثل هذا اللي عم تحكي معه!) لحتى يخدم زباينك 24 ساعة.";
-            }
-
-            // المهارات
-            if(t.includes('مهارات') || t.includes('خبرة') || t.includes('تقنيات') || t.includes('لغات')) {
-                return "محمد محترف بلغات الواجهات (HTML, CSS, JavaScript)، وعنده خبرة بربط المواقع بالذكاء الاصطناعي (OpenAI & Gemini)، وبيستخدم أدوات احترافية زي Vercel و Git.";
-            }
-
-            // المشاريع
-            if(t.includes('مشاريع') || t.includes('أعمال') || t.includes('نماذج') || t.includes('شغل سابق')) {
-                return "من أعماله: مساعد دردشة ذكي، أداة لكتابة المحتوى بالـ AI، ومعرض أعمال متجاوب. فيك تطلع فوق لقسم 'المشاريع' لتشوف أمثلة حية!";
-            }
-
-            // الإقامة والموقع
-            if(t.includes('وين ساكن') || t.includes('من وين') || t.includes('مقيم') || t.includes('بأي بلد') || t.includes('مكان')) {
-                return "محمد مقيم حالياً في مدينة إينغول في بورصة، تركيا 🇹🇷، ولكنه بيستلم مشاريع وبشتغل عن بعد (Remote) مع أي شخص بالعالم!";
-            }
-
-            // التواصل والتوظيف
-            if(t.includes('تواصل') || t.includes('رقم') || t.includes('ايميل') || t.includes('وظيفة') || t.includes('وظفه') || t.includes('توظيف')) {
-                return "محمد متاح للعمل والتوظيف فوراً! 💼 اكتب له رسالة عبر (نموذج التواصل) الموجود أسفل الصفحة، ورح يتواصل معك بأسرع وقت لنتفق على التفاصيل.";
-            }
-            
-            // من أنت
-            if(t.includes('مين انت') || t.includes('من أنت') || t.includes('روبوت') || t.includes('ذكاء')) {
-                return "أنا مساعد دردشة مبرمج بالذكاء الاصطناعي، وظيفتي أجاوب على أسئلتك بخصوص محمد، مهاراته، مشاريعه، وكيف بيقدر يفيد عملك.";
-            }
-            
-            // إذا لم يفهم السؤال (سؤال خارج الاختصاص)
-            return "سؤال حلو! بس أنا كمساعد محلي مبرمج فقط للإجابة عن أسئلة بتخص مبرمجنا محمد (خدماته، أعماله، وكيف بيصمم لك موقعك). لأي استفسار دقيق، راسله عبر نموذج التواصل!";
-        }
-
-        // --- Voice Recognition Logic (ميزة تسجيل الصوت) ---
-        const micBtn = document.getElementById('micBtn');
-        const chatInput = document.getElementById('chatInput');
-        let recognition;
-
-        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.lang = 'ar-SA'; // يدعم العربية بجميع لهجاتها
-            recognition.interimResults = false;
-
-            recognition.onstart = function() {
-                micBtn.classList.add('recording');
-                chatInput.placeholder = "جاري الاستماع... تحدث الآن";
-            };
-
-            recognition.onresult = function(event) {
-                const transcript = event.results[0][0].transcript;
-                chatInput.value = transcript;
-                sendMessage(); // يرسل السؤال تلقائياً بعد انتهاء الكلام
-            };
-
-            recognition.onerror = function(event) {
-                console.error("خطأ في الميكروفون", event.error);
-                micBtn.classList.remove('recording');
-                chatInput.placeholder = "اكتب أو تحدث هنا...";
-            };
-
-            recognition.onend = function() {
-                micBtn.classList.remove('recording');
-                chatInput.placeholder = "اكتب أو تحدث هنا...";
-            };
-        }
-
-        function startDictation() {
-            if (recognition) {
-                recognition.start();
-            } else {
-                alert("عذراً، متصفحك لا يدعم ميزة الميكروفون. يرجى استخدام Google Chrome.");
-            }
+                statusDiv.style.display = 'none';
+            }, 5000);
         }
     </script>
+
+    <!-- كود Tidio AI الحقيقي الخاص بك -->
+    <script src="//code.tidio.co/nzjhevfsiashls1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
