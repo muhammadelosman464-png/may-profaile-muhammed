@@ -28,7 +28,7 @@
             scroll-behavior: smooth;
         }
 
-        /* خلفية الأكواد المتحركة بألوان مريحة للعين (أخضر هادئ مع لمسات ذهبية وشفافية عالية) */
+        /* خلفية الأكواد والأرقام الشفافة جداً والهادئة تماماً للعين */
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -38,6 +38,7 @@
             z-index: -1;
             pointer-events: none;
             background-color: var(--bg-base);
+            opacity: 0.35; /* شفافية عامة خفيفة جداً لكي لا تظهر بشكل بارز أو مزعج */
         }
 
         body {
@@ -462,7 +463,6 @@
 </head>
 <body>
 
-    <!-- خلفية الأكواد المتحركة بألوان (أخضر هادئ وذهبي خافت) مريحة للعين -->
     <canvas id="matrixCanvas"></canvas>
 
     <nav>
@@ -494,7 +494,6 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills">
             <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
             <div class="skills-grid">
@@ -533,7 +532,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">المشاريع المميزة</h2>
             <div class="projects-grid">
@@ -589,7 +587,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">تواصل معي</h2>
             <div class="glass-card contact-box">
@@ -621,7 +618,6 @@
         <p data-key="footerText">&copy; 2026 MUHAMMED ELOSMAN | جميع الحقوق محفوظة</p>
     </footer>
 
-    <!-- Fullscreen Matrix Background (Green & Gold Theme) & Script -->
     <script>
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
@@ -633,8 +629,9 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const characters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/[]{}=+-*#$abcdefghijklmnopqrstuvwxyz0123456789';
-        const fontSize = 15;
+        // تم تنويع الكلمات والأكواد والرموز لتتطاير بشكل خفيف وراقي
+        const codeWords = ['AI', 'JS', 'CSS', 'HTML', 'API', '01', '{}', '<>', 'function()', 'const', 'return', 'git', 'await', 'async', 'div', 'span'];
+        const fontSize = 14;
         let columns = canvas.width / fontSize;
         let drops = [];
 
@@ -649,31 +646,32 @@
         window.addEventListener('resize', initDrops);
 
         function drawMatrix() {
-            // تدرج التلاشي لضمان خلفية شفافة وناعمة غير مزعجة للعين
-            ctx.fillStyle = 'rgba(5, 7, 13, 0.08)';
+            // تلاشي أسرع وأكثر عتمة لتبقى الخلفية ناعمة وخفيفة جداً
+            ctx.fillStyle = 'rgba(5, 7, 13, 0.12)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < drops.length; i++) {
-                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                // اختيار عشوائي بين الكلمات البرمجية والأرقام والرموز لتتطاير بشكل جميل
+                const text = codeWords[Math.floor(Math.random() * codeWords.length)];
                 
-                // مزيج لون أخضر زمردي هادئ مع لمسات ذهبية خافتة للأرقام والرموز
-                if (Math.random() > 0.85) {
-                    ctx.fillStyle = '#d4af37'; // ذهبي خافت وراقي
+                // درجات ألوان أخضر هادئ مع ذهبي خافت جداً للمسات فخمة وغير مزعجة
+                if (Math.random() > 0.88) {
+                    ctx.fillStyle = 'rgba(212, 175, 55, 0.45)'; // ذهبي شفاف خفيف
                 } else {
-                    ctx.fillStyle = '#10b981'; // أخضر مريح للعين
+                    ctx.fillStyle = 'rgba(16, 185, 129, 0.38)'; // أخضر شفاف خفيف جداً
                 }
 
                 ctx.font = fontSize + 'px monospace';
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
-                drops[i]++;
+                drops[i] += 0.8; // حركة أبطأ وأكثر سلاسة
             }
         }
 
-        setInterval(drawMatrix, 45);
+        setInterval(drawMatrix, 60);
 
         // Translations Script
         const translations = {
@@ -783,7 +781,6 @@
         }
     </script>
 
-    <!-- Tidio AI Chatbot Script -->
     <script src="https://code.tidio.co/nzjhevfsiash1s1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
