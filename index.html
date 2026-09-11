@@ -28,17 +28,32 @@
             scroll-behavior: smooth;
         }
 
-        /* خلفية الأكواد والأرقام الشفافة جداً والهادئة تماماً للعين */
+        /* خلفية الأكواد والأرقام الشفافة والهادئة جداً للعين */
         #matrixCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1;
+            z-index: -2;
             pointer-events: none;
             background-color: var(--bg-base);
-            opacity: 0.35; /* شفافية عامة خفيفة جداً لكي لا تظهر بشكل بارز أو مزعج */
+            opacity: 0.35;
+        }
+
+        /* تأثير إضاءة الماوس التفاعلية (Spotlight) */
+        #cursorGlow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, rgba(157, 78, 221, 0.04) 40%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.3s, height 0.3s;
         }
 
         body {
@@ -48,6 +63,7 @@
             line-height: 1.6;
             min-height: 100vh;
             position: relative;
+            overflow-x: hidden;
         }
 
         body.en {
@@ -192,6 +208,18 @@
             font-size: 2.5rem;
             margin-bottom: 1rem;
             color: var(--text-main);
+            min-height: 3.2rem;
+        }
+
+        /* مؤشر الكتابة التلقائية */
+        .typewriter-cursor {
+            color: var(--neon-blue);
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
 
         .hero p {
@@ -242,6 +270,38 @@
             border-color: var(--neon-blue);
             transform: translateY(-2px);
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        /* شريط المهارات العائم المتحرك (Infinite Marquee) */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 2.5rem 0 4rem;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            gap: 2rem;
+            animation: scrollMarquee 25s linear infinite;
+        }
+
+        .marquee-item {
+            background: rgba(157, 78, 221, 0.08);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            color: #d8b4fe;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         .section-title {
@@ -455,7 +515,7 @@
 
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
-            .hero h1 { font-size: 2rem; }
+            .hero h1 { font-size: 1.8rem; min-height: 4rem; }
             .user-name { font-size: 1.8rem; }
             .contact-box { padding: 1.8rem; }
         }
@@ -463,16 +523,19 @@
 </head>
 <body>
 
+    <div id="cursorGlow"></div>
     <canvas id="matrixCanvas"></canvas>
+
+    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
 
     <nav>
         <div class="logo">MUHAMMED ELOSMAN</div>
         <ul class="nav-links">
-            <li><a href="#skills" data-key="navSkills">المهارات</a></li>
-            <li><a href="#projects" data-key="navProjects">المشاريع</a></li>
-            <li><a href="#contact" data-key="navContact">تواصل معي</a></li>
+            <li><a href="#skills" data-key="navSkills" onclick="playClick()">المهارات</a></li>
+            <li><a href="#projects" data-key="navProjects" onclick="playClick()">المشاريع</a></li>
+            <li><a href="#contact" data-key="navContact" onclick="playClick()">تواصل معي</a></li>
         </ul>
-        <button class="lang-btn" id="langToggle">English</button>
+        <button class="lang-btn" id="langToggle" onclick="playClick()">English</button>
     </nav>
 
     <div class="container">
@@ -485,14 +548,35 @@
             <h2 class="user-name">MUHAMMED ELOSMAN</h2>
 
             <span class="badge" data-key="badge">متاح للعمل الحر والتوظيف</span>
-            <h1 data-key="heroTitle">مطور ويب وتطبيقات الذكاء الاصطناعي</h1>
+            
+            <h1 id="typewriterHeading"></h1>
+
             <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.</p>
             
             <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary" data-key="btnProjects">عرض المشاريع</a>
-                <a href="#contact" class="btn btn-secondary" data-key="btnContact">ابدأ المحادثة</a>
+                <a href="#projects" class="btn btn-primary" data-key="btnProjects" onclick="playClick()">عرض المشاريع</a>
+                <a href="#contact" class="btn btn-secondary" data-key="btnContact" onclick="playClick()">ابدأ المحادثة</a>
             </div>
         </section>
+
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="marquee-item">JavaScript (ES6+)</div>
+                <div class="marquee-item">AI Integration & APIs</div>
+                <div class="marquee-item">HTML5 & CSS3</div>
+                <div class="marquee-item">Responsive Design</div>
+                <div class="marquee-item">Git & GitHub</div>
+                <div class="marquee-item">Prompt Engineering</div>
+                <div class="marquee-item">Vercel Deployment</div>
+                <div class="marquee-item">JavaScript (ES6+)</div>
+                <div class="marquee-item">AI Integration & APIs</div>
+                <div class="marquee-item">HTML5 & CSS3</div>
+                <div class="marquee-item">Responsive Design</div>
+                <div class="marquee-item">Git & GitHub</div>
+                <div class="marquee-item">Prompt Engineering</div>
+                <div class="marquee-item">Vercel Deployment</div>
+            </div>
+        </div>
 
         <section id="skills">
             <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
@@ -546,8 +630,8 @@
                             <span class="tag">AI API</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
-                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                            <a href="#" data-key="demoLink" onclick="playClick()">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink" onclick="playClick()">كود المشروع &larr;</a>
                         </div>
                     </div>
                 </div>
@@ -562,8 +646,8 @@
                             <span class="tag">UI/UX</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
-                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                            <a href="#" data-key="demoLink" onclick="playClick()">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink" onclick="playClick()">كود المشروع &larr;</a>
                         </div>
                     </div>
                 </div>
@@ -578,8 +662,8 @@
                             <span class="tag">Vercel</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
-                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
+                            <a href="#" data-key="demoLink" onclick="playClick()">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink" onclick="playClick()">كود المشروع &larr;</a>
                         </div>
                     </div>
                 </div>
@@ -607,7 +691,7 @@
                         <label for="message" data-key="formMessage">الرسالة</label>
                         <textarea id="message" class="form-control" required placeholder="اكتب رسالتك أو تفاصيل مشروعك هنا..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary submit-btn" data-key="btnSubmit">إرسال الرسالة</button>
+                    <button type="submit" class="btn btn-primary submit-btn" data-key="btnSubmit" onclick="playClick()">إرسال الرسالة</button>
                     <div id="formStatus"></div>
                 </form>
             </div>
@@ -619,6 +703,24 @@
     </footer>
 
     <script>
+        // 1. تأثير حركة إضاءة الماوس (Spotlight Glow)
+        const cursorGlow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // 2. مؤثر صوتي ناعم عند الضغط
+        function playClick() {
+            const sound = document.getElementById('clickSound');
+            if(sound) {
+                sound.currentTime = 0;
+                sound.volume = 0.2;
+                sound.play().catch(e => {}); // لتجاوز قيود المتصفح تلقائياً
+            }
+        }
+
+        // 3. خلفية الأكواد والأرقام الشفافة جداً والهادئة
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -629,8 +731,7 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // تم تنويع الكلمات والأكواد والرموز لتتطاير بشكل خفيف وراقي
-        const codeWords = ['AI', 'JS', 'CSS', 'HTML', 'API', '01', '{}', '<>', 'function()', 'const', 'return', 'git', 'await', 'async', 'div', 'span'];
+        const codeWords = ['AI', 'JS', 'CSS', 'HTML', 'API', '01', '{}', '<>', 'function()', 'const', 'return', 'git', 'await', 'async'];
         const fontSize = 14;
         let columns = canvas.width / fontSize;
         let drops = [];
@@ -646,19 +747,16 @@
         window.addEventListener('resize', initDrops);
 
         function drawMatrix() {
-            // تلاشي أسرع وأكثر عتمة لتبقى الخلفية ناعمة وخفيفة جداً
             ctx.fillStyle = 'rgba(5, 7, 13, 0.12)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < drops.length; i++) {
-                // اختيار عشوائي بين الكلمات البرمجية والأرقام والرموز لتتطاير بشكل جميل
                 const text = codeWords[Math.floor(Math.random() * codeWords.length)];
                 
-                // درجات ألوان أخضر هادئ مع ذهبي خافت جداً للمسات فخمة وغير مزعجة
                 if (Math.random() > 0.88) {
-                    ctx.fillStyle = 'rgba(212, 175, 55, 0.45)'; // ذهبي شفاف خفيف
+                    ctx.fillStyle = 'rgba(212, 175, 55, 0.35)'; // ذهبي شفاف جداً
                 } else {
-                    ctx.fillStyle = 'rgba(16, 185, 129, 0.38)'; // أخضر شفاف خفيف جداً
+                    ctx.fillStyle = 'rgba(16, 185, 129, 0.30)'; // أخضر شفاف جداً ومريح للعين
                 }
 
                 ctx.font = fontSize + 'px monospace';
@@ -667,13 +765,12 @@
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
-                drops[i] += 0.8; // حركة أبطأ وأكثر سلاسة
+                drops[i] += 0.7;
             }
         }
-
         setInterval(drawMatrix, 60);
 
-        // Translations Script
+        // 4. نظام الترجمة المزدوجة مع تأثير الكتابة التلقائية (Typewriter)
         const translations = {
             ar: {
                 navSkills: "المهارات",
@@ -743,6 +840,31 @@
 
         let currentLang = 'ar';
         const langToggleBtn = document.getElementById('langToggle');
+        const headingElement = document.getElementById('typewriterHeading');
+        
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingInterval;
+
+        function startTypewriter(text) {
+            headingElement.innerHTML = '';
+            charIndex = 0;
+            
+            function type() {
+                const currentText = translations[currentLang].heroTitle;
+                if (charIndex < currentText.length) {
+                    headingElement.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="typewriter-cursor">|</span>';
+                    charIndex++;
+                    setTimeout(type, 70);
+                } else {
+                    headingElement.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
+                }
+            }
+            type();
+        }
+
+        // تشغيل الكتابة التلقائية عند التحميل
+        startTypewriter();
 
         langToggleBtn.addEventListener('click', () => {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
@@ -763,6 +885,7 @@
                 }
             });
 
+            startTypewriter();
             langToggleBtn.textContent = translations[currentLang].btnLang;
         });
 
