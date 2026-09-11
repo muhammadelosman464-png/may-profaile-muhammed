@@ -144,34 +144,6 @@
             transform: scale(1.05);
         }
 
-        /* تعديل إطار الفيديو: عرض مناسب وطول مضاعف ليناسب الفيديو الخاص بك */
-        .video-box-container {
-            width: 100%;
-            max-width: 280px; /* العرض */
-            height: 420px; /* الطول المضاعف */
-            margin: 2rem auto 2.5rem;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid var(--glass-border);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(157, 78, 221, 0.3);
-            background: var(--glass-card);
-            backdrop-filter: blur(12px);
-            transition: all 0.3s ease;
-        }
-
-        .video-box-container:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 210, 255, 0.4);
-            transform: translateY(-3px);
-        }
-
-        .video-box-container video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
         @keyframes cyberPulse {
             0% {
                 border-color: var(--neon-blue);
@@ -221,7 +193,7 @@
             color: var(--text-sub);
             font-size: 1.15rem;
             max-width: 720px;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 2.2rem;
         }
 
         .hero-cta {
@@ -499,7 +471,6 @@
     <div class="container">
         
         <section class="hero">
-            <!-- صورة البروفايل عادت لمكانها بشكل دقيق -->
             <div class="profile-wrapper">
                 <img src="me.jpeg" alt="Muhammed Elosman" class="profile-pic">
             </div>
@@ -509,14 +480,6 @@
             <span class="badge" data-key="badge">متاح للعمل الحر والتوظيف</span>
             <h1 data-key="heroTitle">مطور ويب وتطبيقات الذكاء الاصطناعي</h1>
             <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.</p>
-
-            <!-- مشغل الفيديو: تم إصلاحه وتمديد طوله وعرضه بشكل مناسب وبدون أزرار توقف للعمل التلقائي -->
-            <div class="video-box-container">
-                <video autoplay loop muted playsinline>
-                    <source src="hero-video.mp4.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                </video>
-            </div>
             
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary" data-key="btnProjects">عرض المشاريع</a>
@@ -760,7 +723,7 @@
         }
     </script>
 
-    <!-- سكربت الدردشة Tidio مُؤمن ليعمل في كافة المتصفحات -->
-    <script src="https://code.tidio.co/nzjhevfsiashls1q3oiancxplympc3go.js" async></script>
+    <!-- Tidio AI Chatbot Script -->
+    <script src="https://code.tidio.co/nzjhevfsiash1s1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
