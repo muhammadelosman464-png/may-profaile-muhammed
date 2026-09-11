@@ -6,12 +6,12 @@
     <title>Muhammed Elosman | AI Web Developer</title>
     <style>
         :root {
-            --bg-base: #070913;
+            --bg-base: #05070d;
             --neon-blue: #00d2ff;
             --neon-purple: #9d4edd;
             --neon-orange: #ff6b35;
             --gradient-accent: linear-gradient(135deg, #00d2ff 0%, #9d4edd 50%, #ff6b35 100%);
-            --glass-card: rgba(13, 17, 30, 0.75);
+            --glass-card: rgba(13, 17, 30, 0.78);
             --glass-border: rgba(157, 78, 221, 0.25);
             --glass-border-hover: rgba(0, 210, 255, 0.5);
             --glass-input: rgba(7, 9, 19, 0.85);
@@ -28,7 +28,7 @@
             scroll-behavior: smooth;
         }
 
-        /* تنسيق خلفية الأكواد والأرقام المتحركة لتملأ الشاشة بالكامل وبشكل شفاف ومريح */
+        /* خلفية الأكواد المتحركة بألوان مريحة للعين (أخضر هادئ مع لمسات ذهبية وشفافية عالية) */
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -56,7 +56,7 @@
         nav {
             position: sticky;
             top: 0;
-            background: rgba(7, 9, 19, 0.85);
+            background: rgba(5, 7, 13, 0.88);
             backdrop-filter: blur(18px);
             -webkit-backdrop-filter: blur(18px);
             display: flex;
@@ -275,7 +275,7 @@
             padding: 2rem;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
@@ -448,7 +448,7 @@
             border-top: 1px solid var(--glass-border);
             color: var(--text-sub);
             font-size: 0.9rem;
-            background: rgba(7, 9, 19, 0.85);
+            background: rgba(5, 7, 13, 0.88);
             backdrop-filter: blur(12px);
         }
 
@@ -462,6 +462,7 @@
 </head>
 <body>
 
+    <!-- خلفية الأكواد المتحركة بألوان (أخضر هادئ وذهبي خافت) مريحة للعين -->
     <canvas id="matrixCanvas"></canvas>
 
     <nav>
@@ -493,6 +494,7 @@
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills">
             <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
             <div class="skills-grid">
@@ -531,6 +533,7 @@
             </div>
         </section>
 
+        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">المشاريع المميزة</h2>
             <div class="projects-grid">
@@ -586,6 +589,7 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">تواصل معي</h2>
             <div class="glass-card contact-box">
@@ -617,6 +621,7 @@
         <p data-key="footerText">&copy; 2026 MUHAMMED ELOSMAN | جميع الحقوق محفوظة</p>
     </footer>
 
+    <!-- Fullscreen Matrix Background (Green & Gold Theme) & Script -->
     <script>
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
@@ -628,7 +633,6 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // رموز وأكواد وأرقام برمجية تتطاير وتتلاشى
         const characters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/[]{}=+-*#$abcdefghijklmnopqrstuvwxyz0123456789';
         const fontSize = 15;
         let columns = canvas.width / fontSize;
@@ -645,15 +649,21 @@
         window.addEventListener('resize', initDrops);
 
         function drawMatrix() {
-            // تأثير التلاشي التدريجي للأكواد لتبدو شفافة وغير مزعجة للعين
-            ctx.fillStyle = 'rgba(7, 9, 19, 0.08)';
+            // تدرج التلاشي لضمان خلفية شفافة وناعمة غير مزعجة للعين
+            ctx.fillStyle = 'rgba(5, 7, 13, 0.08)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            ctx.fillStyle = '#00d2ff'; // لون نيون برمجى متناسق مع الموقع
-            ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                
+                // مزيج لون أخضر زمردي هادئ مع لمسات ذهبية خافتة للأرقام والرموز
+                if (Math.random() > 0.85) {
+                    ctx.fillStyle = '#d4af37'; // ذهبي خافت وراقي
+                } else {
+                    ctx.fillStyle = '#10b981'; // أخضر مريح للعين
+                }
+
+                ctx.font = fontSize + 'px monospace';
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
                 if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -773,6 +783,7 @@
         }
     </script>
 
+    <!-- Tidio AI Chatbot Script -->
     <script src="https://code.tidio.co/nzjhevfsiash1s1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
