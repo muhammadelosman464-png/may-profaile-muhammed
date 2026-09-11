@@ -144,10 +144,11 @@
             transform: scale(1.05);
         }
 
-        /* إطار الفيديو الاحترافي بحجم 500px متجاوب */
+        /* تعديل إطار الفيديو: عرض مناسب وطول مضاعف ليناسب الفيديو الخاص بك */
         .video-box-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 280px; /* العرض */
+            height: 420px; /* الطول المضاعف */
             margin: 2rem auto 2.5rem;
             border-radius: 20px;
             overflow: hidden;
@@ -166,7 +167,7 @@
 
         .video-box-container video {
             width: 100%;
-            height: auto;
+            height: 100%;
             display: block;
             object-fit: cover;
         }
@@ -480,7 +481,6 @@
             .hero h1 { font-size: 2rem; }
             .user-name { font-size: 1.8rem; }
             .contact-box { padding: 1.8rem; }
-            .video-box-container { max-width: 90%; }
         }
     </style>
 </head>
@@ -499,7 +499,7 @@
     <div class="container">
         
         <section class="hero">
-            <!-- 1. صورة البروفايل الدائرية الأصلية -->
+            <!-- صورة البروفايل عادت لمكانها بشكل دقيق -->
             <div class="profile-wrapper">
                 <img src="me.jpeg" alt="Muhammed Elosman" class="profile-pic">
             </div>
@@ -510,11 +510,10 @@
             <h1 data-key="heroTitle">مطور ويب وتطبيقات الذكاء الاصطناعي</h1>
             <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.</p>
 
-            <!-- 2. الفيديو بحجم 500px متجاوب مع تشغيل تلقائي ومستمر -->
+            <!-- مشغل الفيديو: تم إصلاحه وتمديد طوله وعرضه بشكل مناسب وبدون أزرار توقف للعمل التلقائي -->
             <div class="video-box-container">
-                <video autoplay loop muted playsinline controls>
+                <video autoplay loop muted playsinline>
                     <source src="hero-video.mp4.mp4" type="video/mp4">
-                    <source src="hero-video.mp4" type="video/mp4">
                     متصفحك لا يدعم تشغيل الفيديو.
                 </video>
             </div>
@@ -761,7 +760,7 @@
         }
     </script>
 
-    <!-- سكربت Tidio AI المحمي والمؤكد لتحميل فوري -->
+    <!-- سكربت الدردشة Tidio مُؤمن ليعمل في كافة المتصفحات -->
     <script src="https://code.tidio.co/nzjhevfsiashls1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
