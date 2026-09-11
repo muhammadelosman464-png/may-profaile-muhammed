@@ -6,12 +6,12 @@
     <title>Muhammed Elosman | AI Web Developer</title>
     <style>
         :root {
-            --bg-base: #02040a;
+            --bg-base: #030712;
             --neon-blue: #00f2fe;
             --neon-purple: #833ab4;
             --neon-pink: #fd1d1d;
             --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #833ab4 50%, #fd1d1d 100%);
-            --glass-card: rgba(10, 15, 30, 0.75);
+            --glass-card: rgba(10, 15, 30, 0.78);
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --font-ar: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -39,38 +39,38 @@
             font-family: var(--font-en);
         }
 
-        /* خلفية شبكية سايبربانك فخمة */
-        .cyber-grid {
+        /* خلفية الأكواد والأرقام المتحركة (متوسطة الوضوح ومستمرة) */
+        #matrixCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: linear-gradient(rgba(131, 58, 180, 0.04) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(131, 58, 180, 0.04) 1px, transparent 1px);
-            background-size: 50px 50px;
             z-index: -2;
             pointer-events: none;
+            background-color: var(--bg-base);
+            opacity: 0.5; /* وضوح متوسط ومريح جداً للعين */
         }
 
-        /* توهج خلفي هادئ */
-        .ambient-light {
+        /* إضاءة الماوس التفاعلية التي تتبع المؤشر وتموج حوله */
+        #cursorGlow {
             position: fixed;
-            top: 15%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(131, 58, 180, 0.12) 0%, rgba(0, 242, 254, 0.04) 50%, transparent 70%);
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(131, 58, 180, 0.06) 40%, transparent 70%);
+            border-radius: 50%;
             pointer-events: none;
-            filter: blur(80px);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            transition: width 0.2s, height 0.2s;
         }
 
         nav {
             position: sticky;
             top: 0;
-            background: rgba(2, 4, 10, 0.85);
+            background: rgba(3, 7, 18, 0.85);
             backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-between;
@@ -139,30 +139,48 @@
             padding: 5rem 1rem 4rem;
         }
 
-        /* الإطار المموج النظيف والفخم جداً للصورة الشخصية (بدون تفاصيل مزعجة) */
+        /* الإطار المموج والمتناثر باحترافية حول الصورة (Liquid Organic Glow) */
         .profile-wrapper {
             position: relative;
             display: inline-block;
-            margin-bottom: 1.5rem;
-            padding: 5px;
-            border-radius: 50%;
-            background: var(--gradient-accent);
-            box-shadow: 0 0 30px rgba(131, 58, 180, 0.35);
-            animation: softPulse 4s ease-in-out infinite alternate;
+            margin-bottom: 1.8rem;
         }
 
-        @keyframes softPulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(131, 58, 180, 0.3); }
-            100% { transform: scale(1.03); box-shadow: 0 0 40px rgba(0, 242, 254, 0.5); }
+        .profile-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -12px;
+            background: var(--gradient-accent);
+            border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+            filter: blur(15px);
+            opacity: 0.75;
+            animation: organicMorph 8s ease-in-out infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes organicMorph {
+            0% {
+                border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+                transform: rotate(0deg) scale(0.98);
+            }
+            50% {
+                border-radius: 57% 43% 34% 66% / 63% 54% 46% 37%;
+                transform: rotate(180deg) scale(1.05);
+            }
+            100% {
+                border-radius: 40% 60% 50% 50% / 50% 30% 70% 50%;
+                transform: rotate(360deg) scale(1);
+            }
         }
 
         .profile-pic {
-            width: 170px;
-            height: 170px;
+            width: 175px;
+            height: 175px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--bg-base);
+            border: 3px solid rgba(255, 255, 255, 0.15);
             display: block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
         .user-name {
@@ -194,16 +212,6 @@
             margin-bottom: 1rem;
             color: var(--text-main);
             min-height: 3.5rem;
-        }
-
-        .typewriter-cursor {
-            color: var(--neon-blue);
-            animation: blink 0.8s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
         }
 
         .hero p {
@@ -255,7 +263,7 @@
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
-        /* شريط المهارات المتحرك العائم بدون أي اختفاء وبحركة متصلة تامة */
+        /* شريط المهارات المتحرك (مستمر ومتصل بلا انقطاع أو توقف) */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
@@ -266,7 +274,7 @@
         .marquee-track {
             display: inline-flex;
             gap: 2rem;
-            animation: scrollMarquee 22s linear infinite;
+            animation: scrollMarquee 25s linear infinite;
         }
 
         .marquee-item {
@@ -302,7 +310,6 @@
             box-shadow: 0 0 15px rgba(131, 58, 180, 0.6);
         }
 
-        /* شبكة البطاقات مع تأثير الـ 3D التفاعلي */
         .skills-grid, .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -416,7 +423,7 @@
         .form-control {
             width: 100%;
             padding: 0.95rem 1.2rem;
-            background: rgba(2, 4, 10, 0.8);
+            background: rgba(3, 7, 18, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             color: var(--text-main);
@@ -456,7 +463,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             color: var(--text-sub);
             font-size: 0.9rem;
-            background: rgba(2, 4, 10, 0.85);
+            background: rgba(3, 7, 18, 0.85);
         }
 
         @media (max-width: 768px) {
@@ -469,8 +476,8 @@
 </head>
 <body>
 
-    <div class="cyber-grid"></div>
-    <div class="ambient-light"></div>
+    <canvas id="matrixCanvas"></canvas>
+    <div id="cursorGlow"></div>
 
     <nav>
         <div class="logo">MUHAMMED ELOSMAN</div>
@@ -653,7 +660,14 @@
     </footer>
 
     <script>
-        // تأثير الـ 3D المائل للبطاقات مع الماوس
+        // تتبع حركة الماوس لإضاءة الـ Spotlight
+        const cursorGlow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // تأثير الـ 3D المائل للبطاقات
         const cards = document.querySelectorAll('.tilt-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -675,7 +689,57 @@
             });
         });
 
-        // نظام الكتابة التلقائية الحية (Typewriter)
+        // خلفية الأكواد المتحركة (Matrix)
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const codeWords = ['AI', 'JS', 'CSS', 'HTML', 'API', '01', '{}', '<>', 'function()', 'const', 'return', 'git', 'await', 'async'];
+        const fontSize = 14;
+        let columns = canvas.width / fontSize;
+        let drops = [];
+
+        function initDrops() {
+            columns = canvas.width / fontSize;
+            drops = [];
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+        }
+        initDrops();
+        window.addEventListener('resize', initDrops);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(3, 7, 18, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = codeWords[Math.floor(Math.random() * codeWords.length)];
+                
+                if (Math.random() > 0.85) {
+                    ctx.fillStyle = 'rgba(212, 175, 55, 0.55)'; // ذهبي خافت وراقي
+                } else {
+                    ctx.fillStyle = 'rgba(0, 242, 254, 0.45)'; // أزرق نيون متوسط الوضوح ومريح
+                }
+
+                ctx.font = fontSize + 'px monospace';
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
+                    drops[i] = 0;
+                }
+                drops[i] += 0.8;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // الترجمة والكتابة التلقائية الحية
         const translations = {
             ar: {
                 navSkills: "المهارات",
@@ -754,11 +818,11 @@
             
             function type() {
                 if (charIndex < currentText.length) {
-                    headingElement.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="typewriter-cursor">|</span>';
+                    headingElement.innerHTML = currentText.substring(0, charIndex + 1);
                     charIndex++;
-                    setTimeout(type, 65);
+                    setTimeout(type, 60);
                 } else {
-                    headingElement.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
+                    headingElement.innerHTML = currentText;
                 }
             }
             type();
