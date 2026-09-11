@@ -6,15 +6,13 @@
     <title>Muhammed Elosman | AI Web Developer</title>
     <style>
         :root {
-            --bg-base: #05070d;
-            --neon-blue: #00d2ff;
-            --neon-purple: #9d4edd;
-            --neon-orange: #ff6b35;
-            --gradient-accent: linear-gradient(135deg, #00d2ff 0%, #9d4edd 50%, #ff6b35 100%);
-            --glass-card: rgba(13, 17, 30, 0.78);
-            --glass-border: rgba(157, 78, 221, 0.25);
-            --glass-border-hover: rgba(0, 210, 255, 0.5);
-            --glass-input: rgba(7, 9, 19, 0.85);
+            --bg-base: #030712;
+            --neon-blue: #00f2fe;
+            --neon-purple: #7f00ff;
+            --neon-orange: #ff4e50;
+            --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #7f00ff 50%, #ff4e50 100%);
+            --glass-card: rgba(15, 23, 42, 0.85);
+            --glass-border: rgba(127, 0, 255, 0.3);
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --font-ar: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,66 +26,71 @@
             scroll-behavior: smooth;
         }
 
-        /* خلفية الأكواد والأرقام الشفافة والهادئة جداً للعين */
-        #matrixCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -2;
-            pointer-events: none;
-            background-color: var(--bg-base);
-            opacity: 0.35;
-        }
-
-        /* تأثير إضاءة الماوس التفاعلية (Spotlight) */
-        #cursorGlow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 450px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.08) 0%, rgba(157, 78, 221, 0.04) 40%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: -1;
-            transition: width 0.3s, height 0.3s;
-        }
-
         body {
             background-color: var(--bg-base);
             color: var(--text-main);
             font-family: var(--font-ar);
             line-height: 1.6;
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
         }
 
         body.en {
             font-family: var(--font-en);
         }
 
+        /* خلفية شبكية سايبربانك فخمة وهادئة */
+        .cyber-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: linear-gradient(rgba(127, 0, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(127, 0, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* دائرة إضاءة خلفية متحركة */
+        .ambient-light {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(127, 0, 255, 0.15) 0%, rgba(0, 242, 254, 0.05) 50%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(60px);
+            animation: pulseLight 6s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseLight {
+            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
         nav {
             position: sticky;
             top: 0;
-            background: rgba(5, 7, 13, 0.88);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 2.5rem;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             z-index: 100;
         }
 
         .logo {
-            font-weight: 800;
-            font-size: 1.25rem;
-            letter-spacing: 1.5px;
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
             background: var(--gradient-accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -103,34 +106,33 @@
         .nav-links a {
             color: var(--text-sub);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             font-size: 0.95rem;
             font-weight: 500;
         }
 
         .nav-links a:hover {
             color: var(--neon-blue);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+            text-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
         }
 
         .lang-btn {
-            background: rgba(157, 78, 221, 0.12);
-            border: 1px solid rgba(157, 78, 221, 0.4);
+            background: rgba(127, 0, 255, 0.15);
+            border: 1px solid rgba(127, 0, 255, 0.4);
             color: #d8b4fe;
-            padding: 0.45rem 1.1rem;
+            padding: 0.45rem 1.2rem;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(6px);
+            transition: 0.3s;
         }
 
         .lang-btn:hover {
-            background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-            color: #ffffff;
+            background: var(--gradient-accent);
+            color: #fff;
             border-color: transparent;
-            box-shadow: 0 0 18px rgba(157, 78, 221, 0.6);
+            box-shadow: 0 0 20px rgba(127, 0, 255, 0.6);
         }
 
         .container {
@@ -141,7 +143,7 @@
 
         .hero {
             text-align: center;
-            padding: 4.5rem 1rem 3.5rem;
+            padding: 5rem 1rem 4rem;
         }
 
         .profile-wrapper {
@@ -150,68 +152,62 @@
             margin-bottom: 1.5rem;
         }
 
+        /* إطار نيون متحرك يلتف حول صورتك الشخصية بشكل فخم للغاية */
+        .profile-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: var(--gradient-accent);
+            z-index: -1;
+            animation: spinBorder 4s linear infinite;
+        }
+
+        @keyframes spinBorder {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
         .profile-pic {
-            width: 165px;
-            height: 165px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--neon-blue);
+            border: 4px solid var(--bg-base);
             display: block;
-            animation: cyberPulse 4s infinite alternate ease-in-out;
-            transition: transform 0.4s ease;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.05);
-        }
-
-        @keyframes cyberPulse {
-            0% {
-                border-color: var(--neon-blue);
-                box-shadow: 0 0 15px rgba(0, 210, 255, 0.5), 0 0 30px rgba(0, 210, 255, 0.3);
-            }
-            50% {
-                border-color: var(--neon-purple);
-                box-shadow: 0 0 25px rgba(157, 78, 221, 0.7), 0 0 50px rgba(157, 78, 221, 0.4);
-            }
-            100% {
-                border-color: var(--neon-orange);
-                box-shadow: 0 0 20px rgba(255, 107, 53, 0.6), 0 0 40px rgba(255, 107, 53, 0.3);
-            }
         }
 
         .user-name {
-            font-size: 2.3rem;
-            font-weight: 800;
+            font-size: 2.4rem;
+            font-weight: 900;
             letter-spacing: 2px;
             margin-bottom: 0.6rem;
             text-transform: uppercase;
-            background: linear-gradient(135deg, #ffffff 30%, var(--neon-blue) 70%, var(--neon-purple) 100%);
+            background: linear-gradient(135deg, #ffffff 40%, var(--neon-blue) 80%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .badge {
-            background: rgba(157, 78, 221, 0.12);
+            background: rgba(127, 0, 255, 0.15);
             color: #d8b4fe;
-            border: 1px solid rgba(157, 78, 221, 0.4);
-            padding: 0.35rem 1.1rem;
+            border: 1px solid rgba(127, 0, 255, 0.4);
+            padding: 0.4rem 1.2rem;
             border-radius: 30px;
             font-size: 0.85rem;
             display: inline-block;
             margin-bottom: 1.2rem;
             font-weight: 600;
-            box-shadow: 0 0 12px rgba(157, 78, 221, 0.2);
+            box-shadow: 0 0 15px rgba(127, 0, 255, 0.3);
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 1rem;
             color: var(--text-main);
-            min-height: 3.2rem;
+            min-height: 3.5rem;
         }
 
-        /* مؤشر الكتابة التلقائية */
         .typewriter-cursor {
             color: var(--neon-blue);
             animation: blink 0.8s infinite;
@@ -226,7 +222,7 @@
             color: var(--text-sub);
             font-size: 1.15rem;
             max-width: 720px;
-            margin: 0 auto 2.2rem;
+            margin: 0 auto 2.5rem;
         }
 
         .hero-cta {
@@ -237,12 +233,12 @@
 
         .btn {
             display: inline-block;
-            padding: 0.85rem 1.8rem;
-            border-radius: 8px;
+            padding: 0.85rem 1.9rem;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s;
             font-size: 0.95rem;
         }
 
@@ -250,34 +246,32 @@
             background: var(--gradient-accent);
             color: #ffffff;
             font-weight: 700;
-            box-shadow: 0 4px 18px rgba(157, 78, 221, 0.4);
+            box-shadow: 0 4px 20px rgba(127, 0, 255, 0.4);
             border: none;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.55);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 242, 254, 0.6);
         }
 
         .btn-secondary {
             background: var(--glass-card);
             color: var(--text-main);
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-secondary:hover {
             border-color: var(--neon-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
-        /* شريط المهارات العائم المتحرك (Infinite Marquee) */
+        /* شريط المهارات المتحرك العائم */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
-            margin: 2.5rem 0 4rem;
-            position: relative;
+            margin: 3rem 0 5rem;
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
@@ -289,14 +283,13 @@
         }
 
         .marquee-item {
-            background: rgba(157, 78, 221, 0.08);
-            border: 1px solid rgba(157, 78, 221, 0.3);
+            background: rgba(127, 0, 255, 0.1);
+            border: 1px solid rgba(127, 0, 255, 0.3);
             color: #d8b4fe;
             padding: 0.6rem 1.4rem;
             border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 600;
-            backdrop-filter: blur(8px);
         }
 
         @keyframes scrollMarquee {
@@ -306,69 +299,51 @@
 
         .section-title {
             text-align: center;
-            font-size: 2.1rem;
-            margin-bottom: 2.8rem;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 70px;
-            height: 3.5px;
+            width: 80px;
+            height: 4px;
             background: var(--gradient-accent);
             margin: 0.6rem auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 12px rgba(157, 78, 221, 0.5);
+            box-shadow: 0 0 15px rgba(127, 0, 255, 0.6);
         }
 
-        .skills-grid {
+        /* شبكة البطاقات مع تأثير الـ 3D التفاعلي عند تمرير الماوس */
+        .skills-grid, .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             margin-bottom: 5rem;
         }
 
         .glass-card {
             background: var(--glass-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 2.2rem;
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(157, 78, 221, 0.18) 0%, rgba(255, 107, 53, 0.08) 40%, transparent 65%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-
-        .glass-card:hover::before {
-            opacity: 1;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: transform 0.1s ease, border-color 0.3s, box-shadow 0.3s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--glass-border-hover);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 210, 255, 0.3);
+            border-color: var(--neon-blue);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 242, 254, 0.35);
         }
 
-        .skill-card h3 {
+        .skill-card h3, .project-content h3 {
             color: #d8b4fe;
             margin-bottom: 1.2rem;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .tags {
@@ -379,33 +354,26 @@
 
         .tag {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(157, 78, 221, 0.25);
-            padding: 0.4rem 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 0.9rem;
             border-radius: 8px;
             font-size: 0.85rem;
             color: #e2e8f0;
-            transition: all 0.3s;
-            backdrop-filter: blur(8px);
+            transition: 0.3s;
         }
 
         .tag:hover {
-            background: rgba(0, 210, 255, 0.15);
+            background: rgba(0, 242, 254, 0.15);
             color: var(--neon-blue);
-            border-color: rgba(0, 210, 255, 0.5);
-            box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 5rem;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
         }
 
         .project-card {
             display: flex;
             flex-direction: column;
             padding: 0;
+            overflow: hidden;
         }
 
         .project-content {
@@ -415,23 +383,17 @@
             flex-grow: 1;
         }
 
-        .project-content h3 {
-            margin-bottom: 0.6rem;
-            color: var(--text-main);
-            font-size: 1.25rem;
-        }
-
         .project-content p {
             color: var(--text-sub);
             font-size: 0.95rem;
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
         .project-links {
             display: flex;
             gap: 1.2rem;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
         }
 
         .project-links a {
@@ -439,7 +401,7 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: 0.2s;
         }
 
         .project-links a:hover {
@@ -450,11 +412,11 @@
         .contact-box {
             max-width: 650px;
             margin: 0 auto 5rem;
-            padding: 2.8rem;
+            padding: 3rem;
         }
 
         .form-group {
-            margin-bottom: 1.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
@@ -466,21 +428,20 @@
 
         .form-control {
             width: 100%;
-            padding: 0.9rem 1.1rem;
-            background: var(--glass-input);
-            border: 1px solid var(--glass-border);
-            border-radius: 10px;
+            padding: 0.95rem 1.2rem;
+            background: rgba(3, 7, 18, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             color: var(--text-main);
             font-family: inherit;
             font-size: 0.95rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
 
         .form-control:focus {
             outline: none;
             border-color: var(--neon-blue);
-            box-shadow: 0 0 16px rgba(0, 210, 255, 0.35);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
         textarea.form-control {
@@ -490,9 +451,8 @@
 
         .submit-btn {
             width: 100%;
-            padding: 0.95rem;
+            padding: 1rem;
             font-size: 1rem;
-            margin-top: 0.5rem;
             border: none;
         }
 
@@ -505,17 +465,16 @@
 
         footer {
             text-align: center;
-            padding: 2.2rem;
-            border-top: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-sub);
             font-size: 0.9rem;
-            background: rgba(5, 7, 13, 0.88);
-            backdrop-filter: blur(12px);
+            background: rgba(3, 7, 18, 0.9);
         }
 
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
-            .hero h1 { font-size: 1.8rem; min-height: 4rem; }
+            .hero h1 { font-size: 1.9rem; min-height: 4rem; }
             .user-name { font-size: 1.8rem; }
             .contact-box { padding: 1.8rem; }
         }
@@ -523,19 +482,17 @@
 </head>
 <body>
 
-    <div id="cursorGlow"></div>
-    <canvas id="matrixCanvas"></canvas>
-
-    <audio id="clickSound" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+    <div class="cyber-grid"></div>
+    <div class="ambient-light"></div>
 
     <nav>
         <div class="logo">MUHAMMED ELOSMAN</div>
         <ul class="nav-links">
-            <li><a href="#skills" data-key="navSkills" onclick="playClick()">المهارات</a></li>
-            <li><a href="#projects" data-key="navProjects" onclick="playClick()">المشاريع</a></li>
-            <li><a href="#contact" data-key="navContact" onclick="playClick()">تواصل معي</a></li>
+            <li><a href="#skills" data-key="navSkills">المهارات</a></li>
+            <li><a href="#projects" data-key="navProjects">المشاريع</a></li>
+            <li><a href="#contact" data-key="navContact">تواصل معي</a></li>
         </ul>
-        <button class="lang-btn" id="langToggle" onclick="playClick()">English</button>
+        <button class="lang-btn" id="langToggle">English</button>
     </nav>
 
     <div class="container">
@@ -546,7 +503,6 @@
             </div>
 
             <h2 class="user-name">MUHAMMED ELOSMAN</h2>
-
             <span class="badge" data-key="badge">متاح للعمل الحر والتوظيف</span>
             
             <h1 id="typewriterHeading"></h1>
@@ -554,8 +510,8 @@
             <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.</p>
             
             <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary" data-key="btnProjects" onclick="playClick()">عرض المشاريع</a>
-                <a href="#contact" class="btn btn-secondary" data-key="btnContact" onclick="playClick()">ابدأ المحادثة</a>
+                <a href="#projects" class="btn btn-primary" data-key="btnProjects">عرض المشاريع</a>
+                <a href="#contact" class="btn btn-secondary" data-key="btnContact">ابدأ المحادثة</a>
             </div>
         </section>
 
@@ -582,7 +538,7 @@
             <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
             <div class="skills-grid">
                 
-                <div class="glass-card skill-card">
+                <div class="glass-card skill-card tilt-card">
                     <h3 data-key="skillCat1">تطوير واجهات المستخدم (Frontend)</h3>
                     <div class="tags">
                         <span class="tag">HTML5</span>
@@ -593,7 +549,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card skill-card">
+                <div class="glass-card skill-card tilt-card">
                     <h3 data-key="skillCat2">تكامل الذكاء الاصطناعي (AI Integration)</h3>
                     <div class="tags">
                         <span class="tag">OpenAI & Gemini APIs</span>
@@ -603,7 +559,7 @@
                     </div>
                 </div>
 
-                <div class="glass-card skill-card">
+                <div class="glass-card skill-card tilt-card">
                     <h3 data-key="skillCat3">الأدوات وسير العمل (Tools & Workflow)</h3>
                     <div class="tags">
                         <span class="tag">Git & GitHub</span>
@@ -620,7 +576,7 @@
             <h2 class="section-title" data-key="projectsTitle">المشاريع المميزة</h2>
             <div class="projects-grid">
                 
-                <div class="glass-card project-card">
+                <div class="glass-card project-card tilt-card">
                     <div class="project-content">
                         <h3 data-key="p1Title">مساعد دردشة تفاعلي بالذكاء الاصطناعي</h3>
                         <p data-key="p1Desc">تطبيق ويب متكامل يتصل بنماذج الذكاء الاصطناعي التوليدي لتقديم ردود ذكية وسريعة للمستخدمين مع تصميم متجاوب فائق السرعة.</p>
@@ -630,13 +586,13 @@
                             <span class="tag">AI API</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" data-key="demoLink" onclick="playClick()">معاينة مباشرة &larr;</a>
-                            <a href="#" data-key="codeLink" onclick="playClick()">كود المشروع &larr;</a>
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass-card project-card">
+                <div class="glass-card project-card tilt-card">
                     <div class="project-content">
                         <h3 data-key="p2Title">أداة توليد المحتوى الذكي</h3>
                         <p data-key="p2Desc">منصة ويب تساعد صناع المحتوى ورواد الأعمال على ابتكار نصوص تسويقية وأفكار برمجية احترافية بضغطة زر واحدة.</p>
@@ -646,13 +602,13 @@
                             <span class="tag">UI/UX</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" data-key="demoLink" onclick="playClick()">معاينة مباشرة &larr;</a>
-                            <a href="#" data-key="codeLink" onclick="playClick()">كود المشروع &larr;</a>
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass-card project-card">
+                <div class="glass-card project-card tilt-card">
                     <div class="project-content">
                         <h3 data-key="p3Title">معرض أعمال تفاعلي احترافي</h3>
                         <p data-key="p3Desc">موقع معرض أعمال ثنائي اللغة ذو أداء فائق ومستضاف عبر Vercel مع تصميم عصري يدعم التبديل اللحظي بين اللغات.</p>
@@ -662,8 +618,8 @@
                             <span class="tag">Vercel</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" data-key="demoLink" onclick="playClick()">معاينة مباشرة &larr;</a>
-                            <a href="#" data-key="codeLink" onclick="playClick()">كود المشروع &larr;</a>
+                            <a href="#" data-key="demoLink">معاينة مباشرة &larr;</a>
+                            <a href="#" data-key="codeLink">كود المشروع &larr;</a>
                         </div>
                     </div>
                 </div>
@@ -691,7 +647,7 @@
                         <label for="message" data-key="formMessage">الرسالة</label>
                         <textarea id="message" class="form-control" required placeholder="اكتب رسالتك أو تفاصيل مشروعك هنا..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary submit-btn" data-key="btnSubmit" onclick="playClick()">إرسال الرسالة</button>
+                    <button type="submit" class="btn btn-primary submit-btn" data-key="btnSubmit">إرسال الرسالة</button>
                     <div id="formStatus"></div>
                 </form>
             </div>
@@ -703,74 +659,29 @@
     </footer>
 
     <script>
-        // 1. تأثير حركة إضاءة الماوس (Spotlight Glow)
-        const cursorGlow = document.getElementById('cursorGlow');
-        window.addEventListener('mousemove', (e) => {
-            cursorGlow.style.left = e.clientX + 'px';
-            cursorGlow.style.top = e.clientY + 'px';
+        // 1. تأثير الـ 3D المائل للبطاقات مع الماوس
+        const cards = document.querySelectorAll('.tilt-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = -((y - centerY) / 10);
+                const rotateY = (x - centerX) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
         });
 
-        // 2. مؤثر صوتي ناعم عند الضغط
-        function playClick() {
-            const sound = document.getElementById('clickSound');
-            if(sound) {
-                sound.currentTime = 0;
-                sound.volume = 0.2;
-                sound.play().catch(e => {}); // لتجاوز قيود المتصفح تلقائياً
-            }
-        }
-
-        // 3. خلفية الأكواد والأرقام الشفافة جداً والهادئة
-        const canvas = document.getElementById('matrixCanvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        const codeWords = ['AI', 'JS', 'CSS', 'HTML', 'API', '01', '{}', '<>', 'function()', 'const', 'return', 'git', 'await', 'async'];
-        const fontSize = 14;
-        let columns = canvas.width / fontSize;
-        let drops = [];
-
-        function initDrops() {
-            columns = canvas.width / fontSize;
-            drops = [];
-            for (let i = 0; i < columns; i++) {
-                drops[i] = 1;
-            }
-        }
-        initDrops();
-        window.addEventListener('resize', initDrops);
-
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(5, 7, 13, 0.12)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            for (let i = 0; i < drops.length; i++) {
-                const text = codeWords[Math.floor(Math.random() * codeWords.length)];
-                
-                if (Math.random() > 0.88) {
-                    ctx.fillStyle = 'rgba(212, 175, 55, 0.35)'; // ذهبي شفاف جداً
-                } else {
-                    ctx.fillStyle = 'rgba(16, 185, 129, 0.30)'; // أخضر شفاف جداً ومريح للعين
-                }
-
-                ctx.font = fontSize + 'px monospace';
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
-                    drops[i] = 0;
-                }
-                drops[i] += 0.7;
-            }
-        }
-        setInterval(drawMatrix, 60);
-
-        // 4. نظام الترجمة المزدوجة مع تأثير الكتابة التلقائية (Typewriter)
+        // 2. نظام الكتابة التلقائية الحية (Typewriter)
         const translations = {
             ar: {
                 navSkills: "المهارات",
@@ -842,20 +753,16 @@
         const langToggleBtn = document.getElementById('langToggle');
         const headingElement = document.getElementById('typewriterHeading');
         
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingInterval;
-
-        function startTypewriter(text) {
+        function startTypewriter() {
             headingElement.innerHTML = '';
-            charIndex = 0;
+            let charIndex = 0;
+            const currentText = translations[currentLang].heroTitle;
             
             function type() {
-                const currentText = translations[currentLang].heroTitle;
                 if (charIndex < currentText.length) {
                     headingElement.innerHTML = currentText.substring(0, charIndex + 1) + '<span class="typewriter-cursor">|</span>';
                     charIndex++;
-                    setTimeout(type, 70);
+                    setTimeout(type, 65);
                 } else {
                     headingElement.innerHTML = currentText + '<span class="typewriter-cursor">|</span>';
                 }
@@ -863,7 +770,6 @@
             type();
         }
 
-        // تشغيل الكتابة التلقائية عند التحميل
         startTypewriter();
 
         langToggleBtn.addEventListener('click', () => {
@@ -893,7 +799,7 @@
             e.preventDefault();
             const statusDiv = document.getElementById('formStatus');
             statusDiv.style.display = 'block';
-            statusDiv.style.color = '#00d2ff';
+            statusDiv.style.color = '#00f2fe';
             statusDiv.textContent = translations[currentLang].statusSuccess;
             
             document.getElementById('contactForm').reset();
