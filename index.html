@@ -6,13 +6,12 @@
     <title>Muhammed Elosman | AI Web Developer</title>
     <style>
         :root {
-            --bg-base: #030712;
+            --bg-base: #02040a;
             --neon-blue: #00f2fe;
-            --neon-purple: #7f00ff;
-            --neon-orange: #ff4e50;
-            --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #7f00ff 50%, #ff4e50 100%);
-            --glass-card: rgba(15, 23, 42, 0.85);
-            --glass-border: rgba(127, 0, 255, 0.3);
+            --neon-purple: #833ab4;
+            --neon-pink: #fd1d1d;
+            --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #833ab4 50%, #fd1d1d 100%);
+            --glass-card: rgba(10, 15, 30, 0.75);
             --text-main: #f8fafc;
             --text-sub: #94a3b8;
             --font-ar: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -40,50 +39,44 @@
             font-family: var(--font-en);
         }
 
-        /* خلفية شبكية سايبربانك فخمة وهادئة */
+        /* خلفية شبكية سايبربانك فخمة */
         .cyber-grid {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-image: linear-gradient(rgba(127, 0, 255, 0.03) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(127, 0, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: linear-gradient(rgba(131, 58, 180, 0.04) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(131, 58, 180, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
             z-index: -2;
             pointer-events: none;
         }
 
-        /* دائرة إضاءة خلفية متحركة */
+        /* توهج خلفي هادئ */
         .ambient-light {
             position: fixed;
-            top: 20%;
+            top: 15%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(127, 0, 255, 0.15) 0%, rgba(0, 242, 254, 0.05) 50%, transparent 70%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(131, 58, 180, 0.12) 0%, rgba(0, 242, 254, 0.04) 50%, transparent 70%);
             z-index: -1;
             pointer-events: none;
-            filter: blur(60px);
-            animation: pulseLight 6s infinite alternate ease-in-out;
-        }
-
-        @keyframes pulseLight {
-            0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
-            100% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+            filter: blur(80px);
         }
 
         nav {
             position: sticky;
             top: 0;
-            background: rgba(3, 7, 18, 0.9);
+            background: rgba(2, 4, 10, 0.85);
             backdrop-filter: blur(20px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.2rem 2.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             z-index: 100;
         }
 
@@ -117,8 +110,8 @@
         }
 
         .lang-btn {
-            background: rgba(127, 0, 255, 0.15);
-            border: 1px solid rgba(127, 0, 255, 0.4);
+            background: rgba(131, 58, 180, 0.15);
+            border: 1px solid rgba(131, 58, 180, 0.4);
             color: #d8b4fe;
             padding: 0.45rem 1.2rem;
             border-radius: 20px;
@@ -132,7 +125,7 @@
             background: var(--gradient-accent);
             color: #fff;
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(127, 0, 255, 0.6);
+            box-shadow: 0 0 20px rgba(131, 58, 180, 0.6);
         }
 
         .container {
@@ -146,26 +139,21 @@
             padding: 5rem 1rem 4rem;
         }
 
+        /* الإطار المموج النظيف والفخم جداً للصورة الشخصية (بدون تفاصيل مزعجة) */
         .profile-wrapper {
             position: relative;
             display: inline-block;
             margin-bottom: 1.5rem;
-        }
-
-        /* إطار نيون متحرك يلتف حول صورتك الشخصية بشكل فخم للغاية */
-        .profile-wrapper::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
+            padding: 5px;
             border-radius: 50%;
             background: var(--gradient-accent);
-            z-index: -1;
-            animation: spinBorder 4s linear infinite;
+            box-shadow: 0 0 30px rgba(131, 58, 180, 0.35);
+            animation: softPulse 4s ease-in-out infinite alternate;
         }
 
-        @keyframes spinBorder {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+        @keyframes softPulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(131, 58, 180, 0.3); }
+            100% { transform: scale(1.03); box-shadow: 0 0 40px rgba(0, 242, 254, 0.5); }
         }
 
         .profile-pic {
@@ -173,7 +161,7 @@
             height: 170px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--bg-base);
+            border: 3px solid var(--bg-base);
             display: block;
         }
 
@@ -189,16 +177,16 @@
         }
 
         .badge {
-            background: rgba(127, 0, 255, 0.15);
+            background: rgba(131, 58, 180, 0.15);
             color: #d8b4fe;
-            border: 1px solid rgba(127, 0, 255, 0.4);
+            border: 1px solid rgba(131, 58, 180, 0.4);
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
             font-size: 0.85rem;
             display: inline-block;
             margin-bottom: 1.2rem;
             font-weight: 600;
-            box-shadow: 0 0 15px rgba(127, 0, 255, 0.3);
+            box-shadow: 0 0 15px rgba(131, 58, 180, 0.3);
         }
 
         .hero h1 {
@@ -246,7 +234,7 @@
             background: var(--gradient-accent);
             color: #ffffff;
             font-weight: 700;
-            box-shadow: 0 4px 20px rgba(127, 0, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(131, 58, 180, 0.4);
             border: none;
         }
 
@@ -267,24 +255,23 @@
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
-        /* شريط المهارات المتحرك العائم */
+        /* شريط المهارات المتحرك العائم بدون أي اختفاء وبحركة متصلة تامة */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
             margin: 3rem 0 5rem;
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+            width: 100%;
         }
 
         .marquee-track {
             display: inline-flex;
             gap: 2rem;
-            animation: scrollMarquee 25s linear infinite;
+            animation: scrollMarquee 22s linear infinite;
         }
 
         .marquee-item {
-            background: rgba(127, 0, 255, 0.1);
-            border: 1px solid rgba(127, 0, 255, 0.3);
+            background: rgba(131, 58, 180, 0.1);
+            border: 1px solid rgba(131, 58, 180, 0.3);
             color: #d8b4fe;
             padding: 0.6rem 1.4rem;
             border-radius: 30px;
@@ -312,10 +299,10 @@
             background: var(--gradient-accent);
             margin: 0.6rem auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 15px rgba(127, 0, 255, 0.6);
+            box-shadow: 0 0 15px rgba(131, 58, 180, 0.6);
         }
 
-        /* شبكة البطاقات مع تأثير الـ 3D التفاعلي عند تمرير الماوس */
+        /* شبكة البطاقات مع تأثير الـ 3D التفاعلي */
         .skills-grid, .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -405,7 +392,7 @@
         }
 
         .project-links a:hover {
-            color: var(--neon-orange);
+            color: var(--neon-pink);
             text-decoration: underline;
         }
 
@@ -429,7 +416,7 @@
         .form-control {
             width: 100%;
             padding: 0.95rem 1.2rem;
-            background: rgba(3, 7, 18, 0.8);
+            background: rgba(2, 4, 10, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             color: var(--text-main);
@@ -466,10 +453,10 @@
         footer {
             text-align: center;
             padding: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             color: var(--text-sub);
             font-size: 0.9rem;
-            background: rgba(3, 7, 18, 0.9);
+            background: rgba(2, 4, 10, 0.85);
         }
 
         @media (max-width: 768px) {
@@ -517,6 +504,13 @@
 
         <div class="marquee-container">
             <div class="marquee-track">
+                <div class="marquee-item">JavaScript (ES6+)</div>
+                <div class="marquee-item">AI Integration & APIs</div>
+                <div class="marquee-item">HTML5 & CSS3</div>
+                <div class="marquee-item">Responsive Design</div>
+                <div class="marquee-item">Git & GitHub</div>
+                <div class="marquee-item">Prompt Engineering</div>
+                <div class="marquee-item">Vercel Deployment</div>
                 <div class="marquee-item">JavaScript (ES6+)</div>
                 <div class="marquee-item">AI Integration & APIs</div>
                 <div class="marquee-item">HTML5 & CSS3</div>
@@ -659,7 +653,7 @@
     </footer>
 
     <script>
-        // 1. تأثير الـ 3D المائل للبطاقات مع الماوس
+        // تأثير الـ 3D المائل للبطاقات مع الماوس
         const cards = document.querySelectorAll('.tilt-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -670,8 +664,8 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                const rotateX = -((y - centerY) / 10);
-                const rotateY = (x - centerX) / 10;
+                const rotateX = -((y - centerY) / 12);
+                const rotateY = (x - centerX) / 12;
                 
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
             });
@@ -681,7 +675,7 @@
             });
         });
 
-        // 2. نظام الكتابة التلقائية الحية (Typewriter)
+        // نظام الكتابة التلقائية الحية (Typewriter)
         const translations = {
             ar: {
                 navSkills: "المهارات",
