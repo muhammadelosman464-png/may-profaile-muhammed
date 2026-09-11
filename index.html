@@ -159,6 +159,34 @@
             }
         }
 
+        /* تنسيق إطار الفيديو الاحترافي المتناسق */
+        .hero-video-wrapper {
+            max-width: 580px;
+            margin: 2.2rem auto 2.5rem;
+            padding: 9px;
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 30px rgba(157, 78, 221, 0.25);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-video-wrapper:hover {
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 210, 255, 0.35);
+            transform: translateY(-4px);
+        }
+
+        .hero-video-wrapper video {
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            display: block;
+            object-fit: cover;
+        }
+
         .user-name {
             font-size: 2.3rem;
             font-weight: 800;
@@ -453,6 +481,7 @@
             .hero h1 { font-size: 2rem; }
             .user-name { font-size: 1.8rem; }
             .contact-box { padding: 1.8rem; }
+            .hero-video-wrapper { max-width: 100%; }
         }
     </style>
 </head>
@@ -480,6 +509,14 @@
             <span class="badge" data-key="badge">متاح للعمل الحر والتوظيف</span>
             <h1 data-key="heroTitle">مطور ويب وتطبيقات الذكاء الاصطناعي</h1>
             <p data-key="heroSubtitle">أجمع بين قوة تقنيات الويب الحديثة ونماذج الذكاء الاصطناعي لبناء واجهات مستخدم سريعة، تفاعلية، وتجارب رقمية استثنائية.</p>
+
+            <!-- مشغل الفيديو الاحترافي المدمج -->
+            <div class="hero-video-wrapper">
+                <video autoplay loop muted playsinline poster="me.jpeg">
+                    <source src="my-video.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+            </div>
             
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary" data-key="btnProjects">عرض المشاريع</a>
@@ -723,7 +760,7 @@
         }
     </script>
 
-    <!-- Tidio AI Chatbot Script -->
-    <script src="https://code.tidio.co/nzjhevfsiash1s1q3oiancxplympc3go.js" async></script>
+    <!-- كود Tidio AI الحقيقي الخاص بك -->
+    <script src="//code.tidio.co/nzjhevfsiashls1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
