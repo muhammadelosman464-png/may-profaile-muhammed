@@ -28,7 +28,7 @@
             scroll-behavior: smooth;
         }
 
-        /* تنسيق خلفية البرمجة المتحركة لتغطي الشاشة بالكامل وبشكل ثابت ومستمر */
+        /* تنسيق خلفية الأكواد والأرقام المتحركة لتملأ الشاشة بالكامل وبشكل شفاف ومريح */
         #matrixCanvas {
             position: fixed;
             top: 0;
@@ -618,7 +618,6 @@
     </footer>
 
     <script>
-        // Fullscreen Matrix Code Background Script
         const canvas = document.getElementById('matrixCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -629,8 +628,9 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
+        // رموز وأكواد وأرقام برمجية تتطاير وتتلاشى
         const characters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/[]{}=+-*#$abcdefghijklmnopqrstuvwxyz0123456789';
-        const fontSize = 16;
+        const fontSize = 15;
         let columns = canvas.width / fontSize;
         let drops = [];
 
@@ -645,11 +645,11 @@
         window.addEventListener('resize', initDrops);
 
         function drawMatrix() {
-            // تأثير شفافية العتمة لتكوين حركة الأكواد المتطايرة دون إزعاج العين
+            // تأثير التلاشي التدريجي للأكواد لتبدو شفافة وغير مزعجة للعين
             ctx.fillStyle = 'rgba(7, 9, 19, 0.08)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#00d2ff'; // لون نيون أزرق برمجى جذاب
+            ctx.fillStyle = '#00d2ff'; // لون نيون برمجى متناسق مع الموقع
             ctx.font = fontSize + 'px monospace';
 
             for (let i = 0; i < drops.length; i++) {
