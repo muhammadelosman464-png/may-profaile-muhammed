@@ -203,7 +203,7 @@
             margin-bottom: 2.5rem;
         }
 
-        /* تنسيق حاوية الفيديو المدمج */
+        /* تنسيق حاوية تأثير البرمجة بنفس الأبعاد المطلوبة */
         .video-wrapper {
             margin: 2rem auto 0;
             width: 100%;
@@ -216,11 +216,10 @@
             width: 500px;
             max-width: 100%;
             height: 400px;
-            object-fit: cover;
             border-radius: 18px;
             border: 1px solid var(--glass-border);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.25);
-            background: #000;
+            background: #070913;
         }
 
         .btn {
@@ -508,16 +507,11 @@
                 <a href="#contact" class="btn btn-secondary" data-key="btnContact">ابدأ المحادثة</a>
             </div>
 
-            <!-- عنصر الفيديو المضاف بالأبعاد والمواصفات المطلوبة -->
             <div class="video-wrapper">
-                <video class="custom-video" width="500" height="400" autoplay muted loop playsinline controls>
-                    <source src="video.mp4" type="video/mp4">
-                    متصفحك لا يدعم تشغيل الفيديو.
-                </video>
+                <canvas id="matrixCanvas" class="custom-video" width="500" height="400"></canvas>
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills">
             <h2 class="section-title" data-key="skillsTitle">المهارات والتقنيات</h2>
             <div class="skills-grid">
@@ -556,7 +550,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title" data-key="projectsTitle">المشاريع المميزة</h2>
             <div class="projects-grid">
@@ -612,7 +605,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2 class="section-title" data-key="contactTitle">تواصل معي</h2>
             <div class="glass-card contact-box">
@@ -644,8 +636,41 @@
         <p data-key="footerText">&copy; 2026 MUHAMMED ELOSMAN | جميع الحقوق محفوظة</p>
     </footer>
 
-    <!-- Dual Language Toggle Script -->
     <script>
+        // Matrix Animation Script
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const characters = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ<>/[]{}=+-*#$';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(7, 9, 19, 0.15)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00d2ff';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 50);
+
+        // Translations
         const translations = {
             ar: {
                 navSkills: "المهارات",
@@ -753,7 +778,6 @@
         }
     </script>
 
-    <!-- Tidio AI Chatbot Script -->
     <script src="https://code.tidio.co/nzjhevfsiash1s1q3oiancxplympc3go.js" async></script>
 </body>
 </html>
